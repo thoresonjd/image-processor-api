@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import { AppBar, Toolbar } from '@mui/material'
-import TransformImage from "../components/TransformImage";
-import DisplayImage from "../components/DisplayImage";
-import UploadImage from "../components/UploadImage";
+import { AppBar, Toolbar } from '@mui/material';
+import { UploadImage, DownloadImage, TransformImage, DisplayImage } from '../components';
 
 const ImageProcessorDashboard: React.FC = () => {
 
@@ -13,6 +11,7 @@ const ImageProcessorDashboard: React.FC = () => {
       <AppBar position='static'>
         <Toolbar sx={{margin: '0 auto'}}>
           <UploadImage setImage={setImage} />
+          <DownloadImage image={image}/>
         </Toolbar>
       </AppBar>
       <div className='dashboard'>
