@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
+import UploadIcon from '@mui/icons-material/Upload'
 
 const validExtensions = ['jpg', 'png']
 
@@ -48,7 +49,10 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
           onChange={fileSelectedHandler}
         />
         <label htmlFor="upload-image">
-          <Button variant='text' component='span'>Upload Image</Button>
+          <Button variant='contained' component='span'>
+            <UploadIcon />
+            Upload Image
+          </Button>
         </label>
       </>
     ); 

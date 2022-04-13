@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download'
 
 interface Props {
   image: string | undefined
@@ -17,7 +18,10 @@ const DownloadImage: React.FC<Props> = ({image}) => {
 
   const DownloadButton = () => {
     return (
-      <Button>Download Image</Button> 
+      <Button>
+        <DownloadIcon />
+        Download Image
+      </Button> 
     );
   }
 
