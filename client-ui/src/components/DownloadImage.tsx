@@ -9,9 +9,16 @@ interface Props {
 
 const DownloadImage: React.FC<Props> = ({image}) => {
 
+  const getExtension = () => {
+    if (!image) return
+    var extension = /\/.*;/.exec(image)![0]
+    extension = extension.slice(1, extension.length - 1)
+    return extension
+  }
+
   const download = () => {
     if (!image) return
-    saveAs(image, 'image.png')
+    saveAs(image, 'result.' + getExtension())
   }
 
   const DownloadButton = () => {
