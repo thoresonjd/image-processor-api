@@ -1,3 +1,26 @@
+.dashboard {
+  display: flex;
+  width: 100%;
+}
+
+.transformation-tools {
+  width: 25%;
+  background-color: grey;
+}
+
+.display-image {
+  width: 75%;
+  background-color: black;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
 }
