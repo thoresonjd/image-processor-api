@@ -7,7 +7,11 @@ interface Props {
 const DisplayImage: React.FC<Props> = ({image}) => {
   return (
     <div className='display-image center'>
-      <img src={image} alt='image' className='image'/>
+      {image ? (
+        <img src={image} alt='image' className='image'/>
+      ) : (
+        "Image Preview"
+      )}
     </div>
   );
 }
