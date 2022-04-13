@@ -1,16 +1,25 @@
 .dashboard {
   display: flex;
   width: 100%;
+  max-height: 100vh;
 }
 
 .transformation-tools {
   width: 25%;
-  background-color: grey;
+  background-color: rgb(60, 60, 60);
 }
 
 .display-image {
   width: 75%;
-  background-color: black;
+  background-color: grey;
+}
+
+.image {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  overflow: 'hidden';
+  background-size: 'contain';
 }
 
 .center {
