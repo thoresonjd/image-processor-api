@@ -22,7 +22,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
     return validExtensions.includes(tokens[tokens.length - 1])
   }
 
-  const getBase64 = (file: any) => {
+  const encodeBase64 = (file: any) => {
     return new Promise<string> ((resolve,reject)=> {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -34,7 +34,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
   const fileSelectedHandler = (event: React.BaseSyntheticEvent) => {
     if (!hasValidExtension(event.target.files[0].name)) return
     if (event.target.files && event.target.files[0])
-      getBase64(event.target.files[0]).then(data => setNewImage(data))
+      encodeBase64(event.target.files[0]).then(data => setNewImage(data))
   }
 
   const UploadButton = () => {

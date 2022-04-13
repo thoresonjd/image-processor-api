@@ -12,7 +12,7 @@ const TransformImage: React.FC<Props> = ({setImage}) => {
     setImage(newImage)
   ), [newImage, setImage])
 
-  const getBase64 = (file: any) => {
+  const encodeBase64 = (file: any) => {
     return new Promise<string> ((resolve,reject)=> {
       const reader = new FileReader();
       reader.readAsDataURL(file);
