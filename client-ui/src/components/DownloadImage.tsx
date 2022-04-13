@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download'
+import { saveAs } from 'file-saver'
 
 interface Props {
   image: string | undefined
@@ -8,17 +9,14 @@ interface Props {
 
 const DownloadImage: React.FC<Props> = ({image}) => {
 
-  const decodeBase64 = () => {
-    // TODO: Convert Base64 to file
-  }
-
   const download = () => {
-    // TODO: Implement download
+    if (!image) return
+    saveAs(image, 'image.png')
   }
 
   const DownloadButton = () => {
     return (
-      <Button>
+      <Button onClick={() => download()}>
         <DownloadIcon />
         Download Image
       </Button> 
