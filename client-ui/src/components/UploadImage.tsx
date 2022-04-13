@@ -10,11 +10,11 @@ interface Props {
 
 const UploadImage: React.FC<Props> = ({setImage}) => {
 
-  const [newImage, setNewImage] = useState<string | undefined>(undefined)  
+  const [uploadedImage, setUploadedImage] = useState<string | undefined>(undefined)  
 
   useEffect(() => (
-    setImage(newImage)
-  ), [newImage, setImage])
+    setImage(uploadedImage)
+  ), [uploadedImage, setImage])
 
   const hasValidExtension = (filename: string) => {
     let tokens = filename.split('.')
@@ -35,7 +35,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
   const fileSelectedHandler = (event: React.BaseSyntheticEvent) => {
     if (!hasValidExtension(event.target.files[0].name)) return
     if (event.target.files && event.target.files[0])
-      encodeBase64(event.target.files[0]).then(data => setNewImage(data))
+      encodeBase64(event.target.files[0]).then(data => setUploadedImage(data))
   }
 
   const UploadButton = () => {

@@ -6,11 +6,11 @@ interface Props {
 
 const TransformImage: React.FC<Props> = ({setImage}) => {
 
-  const [newImage, setNewImage] = useState<string | undefined>(undefined)  
+  const [transformedImage, setTransformedImage] = useState<string | undefined>(undefined)  
 
   useEffect(() => (
-    setImage(newImage)
-  ), [newImage, setImage])
+    setImage(transformedImage)
+  ), [transformedImage, setImage])
 
   const encodeBase64 = (file: any) => {
     return new Promise<string> ((resolve,reject)=> {
