@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { AppBar, Toolbar } from '@mui/material'
-import TransformationTools from "../components/TransformationTools";
+import TransformImage from "../components/TransformImage";
 import DisplayImage from "../components/DisplayImage";
 import UploadImage from "../components/UploadImage";
 
@@ -15,8 +15,10 @@ const ImageProcessorDashboard: React.FC = () => {
           <UploadImage setImage={setImage} />
         </Toolbar>
       </AppBar>
-      <TransformationTools setImage={setImage}/>
-      <DisplayImage image={image}/>
+      <div className='dashboard'>
+        <TransformImage setImage={setImage}/>
+        <DisplayImage image={image}/>
+      </div>
     </>
   )
 }
