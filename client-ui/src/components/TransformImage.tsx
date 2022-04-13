@@ -4,7 +4,7 @@ interface Props {
   setImage: Function
 }
 
-const TransformationTools: React.FC<Props> = ({setImage}) => {
+const TransformImage: React.FC<Props> = ({setImage}) => {
 
   const [newImage, setNewImage] = useState<string | undefined>(undefined)  
 
@@ -22,8 +22,8 @@ const TransformationTools: React.FC<Props> = ({setImage}) => {
  } 
 
   return (
-    <>Transformation tools</>
+    <div className='transformation-tools center'>Transformation tools</div>
   );
 }
 
-export default TransformationTools
+export default TransformImage
