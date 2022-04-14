@@ -13,11 +13,13 @@ class Image:
     return PillowImage.open(decodedImageBuffer)
 
   def __encode(self) -> bytes:
+    # TODO: Return as give input format, not just JPEG
     buffered = BytesIO()
     self.image.save(buffered, format="JPEG")
     return base64.b64encode(buffered.getvalue())
 
   def transform(self, transformations: list) -> None:
+    # TODO: Account for all transformations
     self.image = self.image.transpose(PillowImage.FLIP_LEFT_RIGHT)
 
   def getTransformedImage(self) -> bytes:
