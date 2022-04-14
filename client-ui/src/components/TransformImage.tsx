@@ -10,6 +10,13 @@ const api = axios.create({
   baseURL: "http://localhost:6969/"
 })
 
+const mimeToExtension: { [key: string]: string } = {
+  R0lGODdh: 'gif',
+  R0lGODlh: 'gif',
+  iVBORw0KGgo: 'png',
+  '/9j/': 'image/jpg'
+}
+
 interface Props {
   image: string | undefined,
   setImage: Function
@@ -23,15 +30,20 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     setImage(transformedImage)
   ), [transformedImage, setImage])
 
-  const postRequest = () => {
-    api.post('/', {image: image, method: 'post'}).then(res => {
-      console.log(res.data)
-    })
+  const getExtensionFromMimeType = (b64: string) => {
+    for (var mte in mimeToExtension) {
+      if (b64.indexOf(mte) === 0) {
+        return mimeToExtension[mte];
+      }
+    }
   }
 
-  const getRequest = () => {
-    api.get('/').then(res => {
-      console.log(res.data)
+  const postRequest = () => {
+    let jsonReq = {'image': image, 'transformations': ['flip-horizontal']}
+    api.post('/', jsonReq).then(res => {
+      let ext = getExtensionFromMimeType(res.data['image'])
+      let img = 'data:image/'+ ext +';base64,' + res.data['image']
+      setTransformedImage(img)
     })
   }
 
@@ -121,7 +133,6 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
       <h1>Transformations</h1>
       <TransformationForm />
       <Button onClick={()=>postRequest()}>POST request</Button>
-      <Button onClick={()=>getRequest()}>GET request</Button>
     </div>
   );
 }
