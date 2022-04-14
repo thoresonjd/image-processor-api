@@ -14,7 +14,7 @@ const mimeToExtension: { [key: string]: string } = {
   R0lGODdh: 'gif',
   R0lGODlh: 'gif',
   iVBORw0KGgo: 'png',
-  '/9j/': 'image/jpg'
+  '/9j/': 'jpg'
 }
 
 interface Props {
@@ -38,9 +38,25 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     }
   }
 
+  const removeTag = (b64WithTag: string | undefined) => {
+    const pattern = /data:image\/.{3,4};base64,/
+    let b64TagRemoved = b64WithTag?.replace(pattern, '')
+    return b64TagRemoved
+  }
+
+  const constructJsonPostRequest = () => {
+    let jsonRequest = {
+      'image': removeTag(image),
+      'transformations': [
+        'flip-horizontal'
+      ]
+    }
+    return jsonRequest
+  }
+
   const postRequest = () => {
-    let jsonReq = {'image': image, 'transformations': ['flip-horizontal']}
-    api.post('/', jsonReq).then(res => {
+    let req = constructJsonPostRequest()
+    api.post('/', req).then(res => {
       let ext = getExtensionFromMimeType(res.data['image'])
       let img = 'data:image/'+ ext +';base64,' + res.data['image']
       setTransformedImage(img)

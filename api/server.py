@@ -16,7 +16,7 @@ class RequestHandler(Resource):
     req = request.get_json()
 
     # Decode
-    decodedImage = base64.b64decode(req['image'].split(';base64,')[1])
+    decodedImage = base64.b64decode(req['image'])
     decodedBuf = BytesIO(decodedImage)
     decodedBuf.seek(0)
 
