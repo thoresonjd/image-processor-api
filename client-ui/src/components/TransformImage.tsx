@@ -3,19 +3,37 @@ import { FormControlLabel } from '@mui/material'
 import { Switch } from '@mui/material'
 import { TextField } from '@mui/material'
 import { Box } from '@mui/material'
-import TestBackendAccess from './TestBackendAccess'
+import { Button } from '@mui/material'
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: "http://localhost:6969/"
+})
 
 interface Props {
+  image: string | undefined,
   setImage: Function
 }
 
-const TransformImage: React.FC<Props> = ({setImage}) => {
+const TransformImage: React.FC<Props> = ({image, setImage}) => {
 
-  const [transformedImage, setTransformedImage] = useState<string | undefined>(undefined)  
+  const [transformedImage, setTransformedImage] = useState<string | undefined>(image)  
 
   useEffect(() => (
     setImage(transformedImage)
   ), [transformedImage, setImage])
+
+  const postRequest = () => {
+    api.post('/', {image: image, method: 'post'}).then(res => {
+      console.log(res.data)
+    })
+  }
+
+  const getRequest = () => {
+    api.get('/').then(res => {
+      console.log(res.data)
+    })
+  }
 
   const Flip = () => {
     return (
@@ -102,7 +120,8 @@ const TransformImage: React.FC<Props> = ({setImage}) => {
     <div className='transformation-tools'>
       <h1>Transformations</h1>
       <TransformationForm />
-      <TestBackendAccess />
+      <Button onClick={()=>postRequest()}>POST request</Button>
+      <Button onClick={()=>getRequest()}>GET request</Button>
     </div>
   );
 }

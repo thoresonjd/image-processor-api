@@ -15,7 +15,7 @@ const ImageProcessorDashboard: React.FC = () => {
         </Toolbar>
       </AppBar>
       <div className='dashboard'>
-        <TransformImage setImage={setImage}/>
+        <TransformImage image={image} setImage={setImage}/>
         <DisplayImage image={image}/>
       </div>
     </>
