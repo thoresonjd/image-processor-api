@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { FormControlLabel } from '@mui/material' 
+import { Button, FormControlLabel } from '@mui/material' 
 import { Switch } from '@mui/material'
 import { TextField } from '@mui/material'
 import { Box } from '@mui/material'
+import TestBackendAccess from './TestBackendAccess'
 
 interface Props {
   setImage: Function
@@ -101,6 +102,7 @@ const TransformImage: React.FC<Props> = ({setImage}) => {
     <div className='transformation-tools'>
       <h1>Transformations</h1>
       <TransformationForm />
+      <TestBackendAccess />
     </div>
   );
 }
