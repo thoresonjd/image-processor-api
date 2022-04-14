@@ -4,10 +4,10 @@ import base64
 
 class Image:
 
-  def __init__(self, image: any) -> None:
+  def __init__(self, image) -> None:
     self.image: PillowImage = self.__decode(image)
 
-  def __decode(self, image: any) -> PillowImage:
+  def __decode(self, image) -> PillowImage:
     decodedImage = base64.b64decode(image)
     decodedImageBuffer = BytesIO(decodedImage)
     return PillowImage.open(decodedImageBuffer)
