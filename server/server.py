@@ -1,16 +1,19 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Api, Resource
-from flask_restful.utils import cors
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
-api.decorators=[cors.crossdomain(origin='*')]
+cors = CORS(app)
 
-class ImageProcessor(Resource):
+class RequestHandler(Resource):
+  def post(self):
+    return request.get_json()
+
   def get(self):
-    return {"json": "data"}
+    return {'REST': 'GET'}
 
-api.add_resource(ImageProcessor, '/')
+api.add_resource(RequestHandler, '/')
 
 def main() -> None:
   app.run(port=6969, debug=True)

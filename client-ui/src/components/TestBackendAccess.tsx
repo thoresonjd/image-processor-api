@@ -7,7 +7,13 @@ const api = axios.create({
 })
 
 const TestBackendAccess: React.FC = () => {
-  
+
+  const postRequest = () => {
+    api.post('/', {origin: 'react', method: 'post'}).then(res => {
+      console.log(res.data)
+    })
+  }
+
   const getRequest = () => {
     api.get('/').then(res => {
       console.log(res.data)
@@ -15,7 +21,10 @@ const TestBackendAccess: React.FC = () => {
   }
 
   return (
-    <Button onClick={()=>getRequest()}>Backend access</Button>
+    <>
+      <Button onClick={()=>postRequest()}>POST request</Button>
+      <Button onClick={()=>getRequest()}>GET request</Button>
+    </>
   )
 }
 
