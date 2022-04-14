@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { AppBar, Toolbar } from '@mui/material';
 import { UploadImage, DownloadImage, TransformImage, DisplayImage } from '../components';
 
-const ImageProcessorDashboard: React.FC = () => {
+const ImageProcessor: React.FC = () => {
 
   const [image, setImage] = useState<string | undefined>(undefined)
 
@@ -22,4 +22,4 @@ const ImageProcessorDashboard: React.FC = () => {
   )
 }
 
-export default ImageProcessorDashboard
+export default ImageProcessor

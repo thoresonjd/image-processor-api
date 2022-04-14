@@ -14,7 +14,8 @@ class RequestHandler(Resource):
     req = request.get_json()
     image: Image = Image(req['image'])
     image.transform(req['transformations'])
-    res: Response = jsonify({'image': ''.join(map(chr, image.getTransformedImage()))})
+    transformedImage: str = image.getTransformedImage()
+    res: Response = jsonify({'image': transformedImage})
     return res
 
 api.add_resource(RequestHandler, '/')

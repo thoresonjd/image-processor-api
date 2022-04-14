@@ -23,7 +23,8 @@ class Image:
     self.image = self.image.transpose(PillowImage.FLIP_LEFT_RIGHT)
 
   def getTransformedImage(self) -> bytes:
-    return self.__encode()
+    transformedImage: str = ''.join(map(chr, self.__encode())) 
+    return transformedImage
 
   def __del__(self) -> None:
     pass
