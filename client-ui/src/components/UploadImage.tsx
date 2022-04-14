@@ -32,10 +32,10 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
   })
  }
 
-  const fileSelectedHandler = (event: React.BaseSyntheticEvent) => {
-    if (!hasValidExtension(event.target.files[0].name)) return
-    if (event.target.files && event.target.files[0])
-      encodeBase64(event.target.files[0]).then(data => setUploadedImage(data))
+  const selectedFileHandler = (event: React.BaseSyntheticEvent) => {
+    if (!event.target.files || !event.target.files[0] 
+      || !hasValidExtension(event.target.files[0].name)) return
+    encodeBase64(event.target.files[0]).then(data => setUploadedImage(data))
   }
 
   const UploadButton = () => {
@@ -46,7 +46,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
           id="upload-image"
           name="upload-image"
           type="file"
-          onChange={fileSelectedHandler}
+          onChange={selectedFileHandler}
         />
         <label htmlFor="upload-image">
           <Button variant='contained' component='span'>
