@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { FormControlLabel } from '@mui/material' 
-import { Switch } from '@mui/material'
-import { TextField } from '@mui/material'
-import { Box } from '@mui/material'
 import { Button } from '@mui/material'
 import MimeTypes from '../constants/MimeTypes'
+import TransformationForm from './transformations/TransformationForm'
 
 const api = axios.create({
   baseURL: 'http://localhost:6969/'
@@ -18,7 +15,16 @@ interface Props {
 
 const TransformImage: React.FC<Props> = ({image, setImage}) => {
 
-  const [transformedImage, setTransformedImage] = useState<string | undefined>(image)  
+  const [transformedImage, setTransformedImage] = useState<string | undefined>(image)
+  const [flipHorizontal, setFlipHorizontal] = useState<boolean>(false)
+  const [flipVertical, setFlipVertical] = useState<boolean>(false)
+  const [rotate, setRotate] = useState<number>(0)
+  const [rotateLeft, setRotateLeft] = useState<boolean>(false)
+  const [rotateRight, setRotateRight] = useState<boolean>(false)
+  const [resize, setResize] = useState<number[]>([])
+  const [thumbnail, setThumbnail] = useState<boolean>(false)
+  const [grayscale, setGrayscale] = useState<boolean>(false)
+  const [saturation, setSaturation] = useState<number>(1)
 
   useEffect(() => (
     setImage(transformedImage)
@@ -64,91 +70,29 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     })
   }
 
-  const Flip = () => {
-    return (
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Box sx={{width: '25%'}}>Flip</Box>
-        <Box sx={{width: '75%'}}>
-          <FormControlLabel 
-            control={<Switch onChange={()=>console.log("H Flip")}/>} 
-            label='Horizontal'
-          />
-          <FormControlLabel 
-            control={<Switch onChange={()=>console.log("V Flip")}/>} 
-            label='Vertical'
-          />
-        </Box>
-      </Box>
-    );
-  }
-
-  const Resize = () => {
-    return (
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Box sx={{width: '25%'}}>Resize</Box>
-        <Box sx={{display: 'flex', width: '75%'}}>
-          <TextField label='Height' variant='outlined' size='small' />
-          <TextField label='Width' variant='outlined' size='small' />
-        </Box>
-      </Box>
-    )
-  }
-
-  const Rotate = () => {
-    return (
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Box sx={{width: '25%'}}>Rotate</Box>
-        <Box sx={{width: '75%'}}>
-          <TextField label='Degrees' variant='outlined' size='small' />
-        </Box>
-      </Box>  
-    )
-  }
-
-  const Thumbnail = () => {
-    return (
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Box sx={{width: '25%'}}>Tumbnail</Box>
-        <Box sx={{width: '75%', padding: 0}}>
-          <FormControlLabel 
-            control={<Switch onChange={()=>console.log("V Flip")}/>} 
-            label=''
-          />
-        </Box>
-      </Box>  
-    )
-  }
-
-  const Grayscale = () => {
-    return (
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Box sx={{width: '25%'}}>Grayscale</Box>
-        <Box sx={{width: '75%', padding: 0}}>
-          <FormControlLabel 
-            control={<Switch onChange={()=>console.log("V Flip")}/>} 
-            label=''
-          />
-        </Box>
-      </Box>  
-    )
-  }
-
-  const TransformationForm = () => {
-    return (
-      <Box sx={{m: '10px'}} component="form" noValidate autoComplete="off">
-        <Flip />
-        <Resize />
-        <Rotate />
-        <Thumbnail />
-        <Grayscale />
-      </Box>
-    );
-  }
-
   return (
     <div className='transformation-tools'>
       <h1>Transformations</h1>
-      <TransformationForm />
+      <TransformationForm
+        flipHorizontal={flipHorizontal}
+        flipVertical={flipVertical}
+        setFlipHorizontal={setFlipHorizontal}
+        setFlipVertical={setFlipVertical}
+        resize={resize}
+        setResize={setResize}
+        rotate={rotate}
+        rotateLeft={rotateLeft}
+        rotateRight={rotateRight}
+        setRotate={setRotate}
+        setRotateLeft={setRotateLeft}
+        setRotateRight={setRotateRight}
+        thumbnail={thumbnail}
+        setThumbnail={setThumbnail}
+        grayscale={grayscale}
+        setGrayscale={setGrayscale}
+        saturation={saturation}
+        setSaturation={setSaturation}
+      />
       <Button onClick={()=>postRequest()}>POST request</Button>
     </div>
   );
