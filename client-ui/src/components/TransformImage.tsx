@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { FormControlLabel } from '@mui/material' 
 import { Switch } from '@mui/material'
 import { TextField } from '@mui/material'
 import { Box } from '@mui/material'
 import { Button } from '@mui/material'
-import axios from 'axios'
+import MimeTypes from '../constants/MimeTypes'
 
 const api = axios.create({
   baseURL: "http://localhost:6969/"
 })
-
-const mimeToExtension: { [key: string]: string } = {
-  R0lGODdh: 'gif',
-  R0lGODlh: 'gif',
-  iVBORw0KGgo: 'png',
-  '/9j/': 'jpg'
-}
 
 interface Props {
   image: string | undefined,
@@ -31,9 +25,9 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   ), [transformedImage, setImage])
 
   const getExtensionFromMimeType = (b64: string) => {
-    for (var mte in mimeToExtension) {
-      if (b64.indexOf(mte) === 0) {
-        return mimeToExtension[mte];
+    for (var mimeType in MimeTypes) {
+      if (b64.indexOf(mimeType) === 0) {
+        return MimeTypes[mimeType];
       }
     }
   }

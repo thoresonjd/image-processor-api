@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_restful import Api, Resource
-from requests import Response
 from Image import Image
 
 app: Flask = Flask(__name__)
@@ -11,17 +10,17 @@ cors: CORS = CORS(app)
 class ImageProcessor(Resource):
   """Processes RESTful requests for image processing"""
 
-  def post(self) -> Response:
+  def post(self):
     """Handles image transformation requests
     
     :return: A JSON response
     """
 
     req = request.get_json()
-    image: Image = Image(req['image'])
+    image = Image(req['image'])
     image.transform(req['transformations'])
     transformedImage: str = image.getTransformedImage()
-    res: Response = jsonify({'image': transformedImage})
+    res = jsonify({'image': transformedImage})
     return res
 
 api.add_resource(ImageProcessor, '/')

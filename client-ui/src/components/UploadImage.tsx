@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
 import UploadIcon from '@mui/icons-material/Upload'
-
-const validExtensions: string[] = ['jpg', 'jpeg', 'png', 'gif']
+import SupportedExtensions from '../constants/SupportedExtensions'
 
 interface Props {
   setImage: Function
@@ -20,7 +19,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
     let tokens = filename.split('.')
     if (tokens.length === 0) 
       return false
-    return validExtensions.includes(tokens[tokens.length - 1])
+    return SupportedExtensions.includes(tokens[tokens.length - 1])
   }
 
   const encodeBase64 = (file: any) => {
