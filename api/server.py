@@ -8,9 +8,15 @@ app: Flask = Flask(__name__)
 api: Api = Api(app)
 cors: CORS = CORS(app)
 
-class RequestHandler(Resource):
+class ImageProcessor(Resource):
+  """Processes RESTful requests for image processing"""
 
   def post(self) -> Response:
+    """Handles image transformation requests
+    
+    :return: A JSON response
+    """
+
     req = request.get_json()
     image: Image = Image(req['image'])
     image.transform(req['transformations'])
@@ -18,9 +24,11 @@ class RequestHandler(Resource):
     res: Response = jsonify({'image': transformedImage})
     return res
 
-api.add_resource(RequestHandler, '/')
+api.add_resource(ImageProcessor, '/')
 
 def main() -> None:
+  """Hosts the ImageProcessor server"""
+
   app.run(port=6969, debug=True)
 
 if __name__ == '__main__':

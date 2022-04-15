@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
 import UploadIcon from '@mui/icons-material/Upload'
 
-const validExtensions = ['jpg', 'jpeg', 'png', 'gif']
+const validExtensions: string[] = ['jpg', 'jpeg', 'png', 'gif']
 
 interface Props {
   setImage: Function
