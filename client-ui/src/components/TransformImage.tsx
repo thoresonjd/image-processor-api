@@ -8,7 +8,7 @@ import { Button } from '@mui/material'
 import MimeTypes from '../constants/MimeTypes'
 
 const api = axios.create({
-  baseURL: "http://localhost:6969/"
+  baseURL: 'http://localhost:6969/'
 })
 
 interface Props {
@@ -32,16 +32,23 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     }
   }
 
-  const removeTag = (b64WithTag: string | undefined) => {
+  const truncateIdentifierPrefix = (b64Image: string | undefined) => {
     const pattern = /data:image\/.{3,4};base64,/
-    let b64TagRemoved = b64WithTag?.replace(pattern, '')
-    return b64TagRemoved
+    let b64Truncated = b64Image?.replace(pattern, '')
+    return b64Truncated
+  }
+
+  const attachIdentifierPrefix = (b64Image: string | undefined) => {
+    if (!b64Image) return
+    let extension = getExtensionFromMimeType(b64Image)
+    let b64Extended = 'data:image/'+ extension +';base64,' + b64Image
+    return b64Extended
   }
 
   const constructJsonPostRequest = () => {
     // TODO: Construct JSON based on frontend interaction
     let jsonRequest = {
-      'image': removeTag(image),
+      'image': truncateIdentifierPrefix(image),
       'transformations': [
         'flip-horizontal'
       ]
@@ -52,8 +59,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   const postRequest = () => {
     let req = constructJsonPostRequest()
     api.post('/', req).then(res => {
-      let ext = getExtensionFromMimeType(res.data['image'])
-      let img = 'data:image/'+ ext +';base64,' + res.data['image']
+      let img = attachIdentifierPrefix(res.data['image'])
       setTransformedImage(img)
     })
   }

@@ -19,7 +19,7 @@ class ImageProcessor(Resource):
     req = request.get_json()
     image = Image(req['image'])
     image.transform(req['transformations'])
-    transformedImage: str = image.getTransformedImage()
+    transformedImage = image.getTransformedImage()
     res = jsonify({'image': transformedImage})
     return res
 

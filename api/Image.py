@@ -25,7 +25,7 @@ class Image:
     :return: A Base64 image representation
     """
 
-    # TODO: Return as give input format, not just JPEG
+    # TODO: Return as given input format, not just JPEG
     buffered = BytesIO()
     self.image.save(buffered, format="JPEG")
     return base64.b64encode(buffered.getvalue())
@@ -45,7 +45,7 @@ class Image:
     :return: Base64 string representation of an image
     """
 
-    transformedImage: str = ''.join(map(chr, self.__encode())) 
+    transformedImage = ''.join(map(chr, self.__encode())) 
     return transformedImage
 
   def __del__(self) -> None:

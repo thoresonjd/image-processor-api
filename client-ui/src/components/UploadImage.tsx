@@ -28,20 +28,20 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result?.toString() || '');
       reader.onerror = error => reject(error);
-  })
- }
+    })
+  }
 
   const selectedFileHandler = (event: React.BaseSyntheticEvent) => {
     if (!event.target.files || !event.target.files[0] 
       || !hasValidExtension(event.target.files[0].name)) return
-    encodeBase64(event.target.files[0]).then(data => setUploadedImage(data))
+    encodeBase64(event.target.files[0]).then(b64Image => setUploadedImage(b64Image))
   }
 
   const UploadButton = () => {
     return (
       <>
         <input
-          style={{ display: 'none' }}
+          hidden
           id="upload-image"
           name="upload-image"
           type="file"
@@ -55,7 +55,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
         </label>
       </>
     ); 
- }
+  }
 
   return (
     <UploadButton />
