@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, TextField } from '@mui/material'
+import { Box, Slider } from '@mui/material'
 
 interface Props {
   saturation: number,
@@ -11,17 +11,16 @@ const Saturation: React.FC<Props> = (props) => {
     <Box sx={{display: 'flex', alignItems: 'center'}}>
       <Box sx={{width: '25%'}}>Saturation</Box>
       <Box sx={{width: '75%', padding: 0}}>
-        <TextField
-          key={0}
-          value={props.saturation}
-          label='Saturation' 
-          type='number' 
-          variant='outlined' 
-          size='small'
-          sx={{width: '50%'}}
-          onChange={event => {
-            const { value } = event.target;
-            props.setSaturation(parseInt(value));
+        <Slider
+          value={props.saturation * 100}
+          valueLabelDisplay="auto"
+          defaultValue={100}
+          min={0}
+          max={200}
+          scale={(v) => {return v/100}}
+          onChange={(e, v) => {
+            if (typeof(v) === 'number')
+              props.setSaturation(v / 100)
           }}
         />
       </Box>

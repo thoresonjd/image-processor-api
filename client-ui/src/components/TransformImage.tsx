@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button } from '@mui/material'
 import MimeTypes from '../constants/MimeTypes'
-import TransformationForm from './transformations/TransformationForm'
+import TransformationForm from './TransformationForm'
 
 const api = axios.create({
   baseURL: 'http://localhost:6969/'

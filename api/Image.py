@@ -6,7 +6,7 @@ class Image:
   """Allows Base64 image manipulation"""
 
   def __init__(self, image) -> None:
-    self.image: PillowImage = self.__decode(image)
+    self.__image: PillowImage = self.__decode(image)
 
   def __decode(self, image) -> PillowImage:
     """Converts a Base64 string representation of an image to a Pillow Image
@@ -27,7 +27,7 @@ class Image:
 
     # TODO: Return as given input format, not just JPEG
     buffered = BytesIO()
-    self.image.save(buffered, format="JPEG")
+    self.__image.save(buffered, format="JPEG")
     return base64.b64encode(buffered.getvalue())
 
   def transform(self, transformations: list) -> None:
@@ -37,7 +37,7 @@ class Image:
     """
 
     # TODO: Account for all transformations
-    self.image = self.image.transpose(PillowImage.FLIP_LEFT_RIGHT)
+    self.__image = self.__image.transpose(PillowImage.FLIP_LEFT_RIGHT)
 
   def getTransformedImage(self) -> str:
     """Retrieves a Base64 string representation of an image

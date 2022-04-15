@@ -16,7 +16,7 @@ const Rotate: React.FC<Props> = (props) => {
       <Box sx={{width: '25%'}}>Rotate</Box>
       <Box sx={{width: '75%', display: 'flex'}}>
         <FormControlLabel
-          label='Left' 
+          label='L' 
           control={
             <Switch 
               checked={props.rotateLeft}
@@ -26,7 +26,7 @@ const Rotate: React.FC<Props> = (props) => {
           }
         />
         <FormControlLabel
-          label='Right' 
+          label='R' 
           control={
             <Switch 
               checked={props.rotateRight}

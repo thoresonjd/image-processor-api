@@ -17,9 +17,9 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
 
   const hasValidExtension = (filename: string) => {
     let tokens = filename.split('.')
-    if (tokens.length === 0) 
+    if (tokens.length < 2)
       return false
-    return SupportedExtensions.includes(tokens[tokens.length - 1])
+    return SupportedExtensions.includes(tokens[1])
   }
 
   const encodeBase64 = (file: any) => {
@@ -32,9 +32,12 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
   }
 
   const selectedFileHandler = (event: React.BaseSyntheticEvent) => {
-    if (!event.target.files || !event.target.files[0] 
-      || !hasValidExtension(event.target.files[0].name)) return
-    encodeBase64(event.target.files[0]).then(b64Image => setUploadedImage(b64Image))
+    let files = event.target.files
+    if (!files || !files[0] || !hasValidExtension(files[0].name)) 
+      return
+    encodeBase64(event.target.files[0]).then(
+      b64Image => setUploadedImage(b64Image)
+    )
   }
 
   const UploadButton = () => {
