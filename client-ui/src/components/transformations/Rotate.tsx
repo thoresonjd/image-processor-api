@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FormControlLabel, Switch, Box, TextField } from '@mui/material'
 
 interface Props {
@@ -11,6 +11,13 @@ interface Props {
 }
 
 const Rotate: React.FC<Props> = (props) => {
+
+  const [degrees, setDegrees] = useState<number>(0)
+
+  useEffect(() => (
+    props.setRotate(degrees)
+  ), [degrees])
+
   return (
     <Box sx={{display: 'flex', alignItems: 'center'}}>
       <Box sx={{width: '25%'}}>Rotate</Box>
@@ -30,12 +37,18 @@ const Rotate: React.FC<Props> = (props) => {
           control={
             <Switch 
               checked={props.rotateRight}
-              onChange={(e) => props.setRotateRight(e.target.checked)}
+              onChange={e => props.setRotateRight(e.target.checked)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
           }
         />
-        <TextField label='Degrees' type='number' variant='outlined' size='small' />
+        <TextField 
+          label='Degrees'
+          type='number'
+          variant='outlined'
+          size='small'
+          onChange={e => setDegrees(parseInt(e.target.value))}
+        />
       </Box>
     </Box>  
   )
