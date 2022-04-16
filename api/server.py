@@ -3,9 +3,9 @@ from flask_cors import CORS
 from flask_restful import Api, Resource
 from Image import Image
 
-app: Flask = Flask(__name__)
-api: Api = Api(app)
-cors: CORS = CORS(app)
+app = Flask(__name__)
+api = Api(app)
+cors = CORS(app)
 
 class ImageProcessor(Resource):
   """Processes RESTful requests for image processing"""
@@ -25,7 +25,7 @@ class ImageProcessor(Resource):
 
 api.add_resource(ImageProcessor, '/')
 
-def main() -> None:
+def main():
   """Hosts the ImageProcessor server"""
 
   app.run(port=6969, debug=True)
