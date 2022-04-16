@@ -15,8 +15,8 @@ const Saturation: React.FC<Props> = (props) => {
           value={props.saturation * 10}
           valueLabelDisplay="auto"
           defaultValue={10}
-          min={-100}
-          max={100}
+          min={-50}
+          max={50}
           scale={(v) => {return v/10}}
           onChange={(e, v) => {
             if (typeof(v) === 'number')
