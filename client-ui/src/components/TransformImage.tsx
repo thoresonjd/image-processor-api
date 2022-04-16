@@ -18,10 +18,10 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   const [transformedImage, setTransformedImage] = useState<string | undefined>(image)
   const [flipHorizontal, setFlipHorizontal] = useState<boolean>(false)
   const [flipVertical, setFlipVertical] = useState<boolean>(false)
+  const [resize, setResize] = useState<number[]>([])
   const [rotate, setRotate] = useState<number>(0)
   const [rotateLeft, setRotateLeft] = useState<boolean>(false)
   const [rotateRight, setRotateRight] = useState<boolean>(false)
-  const [resize, setResize] = useState<number[]>([])
   const [thumbnail, setThumbnail] = useState<boolean>(false)
   const [grayscale, setGrayscale] = useState<boolean>(false)
   const [saturation, setSaturation] = useState<number>(1)
@@ -53,12 +53,23 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
 
   const constructJsonPostRequest = () => {
     // TODO: Construct JSON based on frontend interaction
+    let transformations = Array<string | object>()
+
+    if (flipHorizontal) transformations.push('flip-horizontal')
+    if (flipVertical) transformations.push('flip-vertical')
+    if (resize.length === 2) transformations.push({'resize': resize})
+    if (rotate) transformations.push({'rotate': rotate})
+    if (rotateLeft) transformations.push('rotate-left')
+    if (rotateRight) transformations.push('rotate-right')
+    if (thumbnail) transformations.push('thumbnail')
+    if (grayscale) transformations.push('grayscale')
+    if (saturation) transformations.push({'saturate': saturation})
+
     let jsonRequest = {
       'image': truncateIdentifierPrefix(image),
-      'transformations': [
-        'rotate-left'
-      ]
+      'transformations': [...transformations]
     }
+
     return jsonRequest
   }
 
