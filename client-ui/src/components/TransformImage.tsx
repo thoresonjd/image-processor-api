@@ -52,7 +52,6 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   }
 
   const constructJsonPostRequest = () => {
-    // TODO: Construct JSON based on frontend interaction
     let transformations = Array<string | object>()
 
     if (flipHorizontal) transformations.push('flip-horizontal')
