@@ -56,7 +56,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     let jsonRequest = {
       'image': truncateIdentifierPrefix(image),
       'transformations': [
-        'flip-horizontal'
+        'rotate-left'
       ]
     }
     return jsonRequest
