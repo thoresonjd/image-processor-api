@@ -12,15 +12,15 @@ const Saturation: React.FC<Props> = (props) => {
       <Box sx={{width: '25%'}}>Saturation</Box>
       <Box sx={{width: '75%', padding: 0}}>
         <Slider
-          value={props.saturation * 100}
+          value={props.saturation * 10}
           valueLabelDisplay="auto"
-          defaultValue={100}
-          min={0}
-          max={200}
-          scale={(v) => {return v/100}}
+          defaultValue={10}
+          min={-100}
+          max={100}
+          scale={(v) => {return v/10}}
           onChange={(e, v) => {
             if (typeof(v) === 'number')
-              props.setSaturation(v / 100)
+              props.setSaturation(v / 10)
           }}
         />
       </Box>
