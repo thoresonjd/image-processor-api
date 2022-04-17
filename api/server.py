@@ -4,7 +4,7 @@ from flask_restful import Api
 from ImageProcessor import ImageProcessor
 
 def main() -> None:
-  """Hosts the ImageProcessor API via REST"""
+  """Hosts the ImageProcessor API via a RESTful API server"""
 
   app: Flask = Flask(__name__)
   api: Api = Api(app)
