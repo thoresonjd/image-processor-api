@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Box } from '@mui/material'
 import MimeTypes from '../constants/MimeTypes'
@@ -26,9 +27,21 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   const [grayscale, setGrayscale] = useState<boolean>(false)
   const [saturation, setSaturation] = useState<number>(1)
 
+  const redirect = useNavigate()
+
   useEffect(() => (
     setImage(transformedImage)
   ), [transformedImage, setImage])
+
+  const postRequest = () => {
+    let req = constructJsonPostRequest()
+    api.post('/', req).then(res => {
+      let img = attachIdentifierPrefix(res.data['image'])
+      setTransformedImage(img)
+    }).catch((error) => {
+      redirect('/error')
+    })
+  }
 
   const getExtensionFromMimeType = (b64: string) => {
     for (var mimeType in MimeTypes) {
@@ -70,14 +83,6 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     }
 
     return jsonRequest
-  }
-
-  const postRequest = () => {
-    let req = constructJsonPostRequest()
-    api.post('/', req).then(res => {
-      let img = attachIdentifierPrefix(res.data['image'])
-      setTransformedImage(img)
-    })
   }
 
   return (
