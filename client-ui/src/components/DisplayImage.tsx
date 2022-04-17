@@ -1,6 +1,6 @@
 import React from 'react'
 import { Zoom } from '@mui/material'
-import ImageIcon from '@mui/icons-material/Image';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 
 interface Props {
   image: string | undefined
@@ -14,7 +14,7 @@ const DisplayImage: React.FC<Props> = ({image}) => {
           <img src={image} alt='display' className='image'/>
         </Zoom>
       ) : (
-        <ImageIcon fontSize='large' />
+        <ImageOutlinedIcon fontSize='large' />
       )}
     </div>
   );
