@@ -5,7 +5,16 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: Colors.Gold
+      main: Colors.Blue
+    },
+    secondary: {
+      main: Colors.Green
+    },
+    warning: {
+      main: Colors.Yellow 
+    },
+    error: {
+      main: Colors.Pink
     }
   },
 });

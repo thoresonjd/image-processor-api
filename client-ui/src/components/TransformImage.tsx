@@ -5,9 +5,13 @@ import { Button, Box } from '@mui/material'
 import MimeTypes from '../constants/MimeTypes'
 import TransformationForm from './TransformationForm'
 
+/*** API endpoint ***/
+
 const api = axios.create({
   baseURL: 'http://localhost:6969/'
 })
+
+/*** Image transformation component ***/
 
 interface Props {
   image: string | undefined,
@@ -15,6 +19,12 @@ interface Props {
 }
 
 const TransformImage: React.FC<Props> = ({image, setImage}) => {
+
+  /*** Redirect handler ***/
+
+  const redirect = useNavigate()
+
+  /*** Transformations ***/
 
   const [transformedImage, setTransformedImage] = useState<string | undefined>(image)
   const [flipHorizontal, setFlipHorizontal] = useState<boolean>(false)
@@ -27,7 +37,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   const [grayscale, setGrayscale] = useState<boolean>(false)
   const [saturation, setSaturation] = useState<number>(1)
 
-  const redirect = useNavigate()
+  /*** Handle image transformations ***/
 
   useEffect(() => (
     setImage(transformedImage)
@@ -38,7 +48,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     api.post('/', req).then(res => {
       let img = attachIdentifierPrefix(res.data['image'])
       setTransformedImage(img)
-    }).catch((error) => {
+    }).catch((err) => {
       redirect('/error')
     })
   }
@@ -109,11 +119,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
         setSaturation={setSaturation}
       />
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button 
-          color='primary'
-          variant='outlined'
-          onClick={()=>postRequest()}
-        >
+        <Button color='warning' variant='outlined'onClick={() => postRequest()}>
           POST request
         </Button>
       </Box>

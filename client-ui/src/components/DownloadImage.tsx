@@ -23,7 +23,7 @@ const DownloadImage: React.FC<Props> = ({image}) => {
 
   const DownloadButton = () => {
     return (
-      <Button onClick={() => download()}>
+      <Button color='secondary' onClick={() => download()}>
         <DownloadIcon />
         Download Image
       </Button> 

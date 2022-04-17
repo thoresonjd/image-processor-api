@@ -12,6 +12,7 @@ const Saturation: React.FC<Props> = (props) => {
       <Box sx={{width: '25%'}}>Saturation</Box>
       <Box sx={{width: '75%', padding: 0}}>
         <Slider
+          color='secondary'
           value={props.saturation * 10}
           valueLabelDisplay="auto"
           defaultValue={10}

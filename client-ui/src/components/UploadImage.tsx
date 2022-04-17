@@ -45,7 +45,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
           onChange={selectedFileHandler}
         />
         <label htmlFor="upload-image">
-          <Button variant='contained' component='span'>
+          <Button color='warning' variant='text' component='span'>
             <UploadIcon />
             Upload Image
           </Button>
