@@ -109,18 +109,3 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
 }
 
 export default TransformImage
-
-const structure = {
-  'image': 'image',
-  'transformations': [
-    'thumbnail',
-    'grayscale',
-    'flip-horizontal',
-    'flip-vertical',
-    'rotate-left',
-    'rotate-right',
-    {'rotate': 'degrees'},
-    {'resize': ['width', 'height']},
-    {'saturate': 'value'}
-  ]
-}
