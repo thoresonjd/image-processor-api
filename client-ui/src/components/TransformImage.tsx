@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Button } from '@mui/material'
+import { Button, Box } from '@mui/material'
 import MimeTypes from '../constants/MimeTypes'
 import TransformationForm from './TransformationForm'
 
@@ -103,7 +103,15 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
         saturation={saturation}
         setSaturation={setSaturation}
       />
-      <Button onClick={()=>postRequest()}>POST request</Button>
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <Button 
+          color='primary'
+          variant='outlined'
+          onClick={()=>postRequest()}
+        >
+          POST request
+        </Button>
+      </Box>
     </div>
   );
 }
