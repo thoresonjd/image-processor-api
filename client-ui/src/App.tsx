@@ -1,14 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from '@mui/material';
 import darkTheme from './theme/Theme';
-import ImageProcessor from './pages/ImageProcessor';
+import { ImageProcessor, Error } from './pages';
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <ImageProcessor />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={darkTheme}>
+        <Routes>
+          <Route path='/' element={<ImageProcessor />} />
+          <Route path='/error' element={<Error />} />
+        </Routes>
+      </ThemeProvider>
+    </Router>
   );
 }
 
