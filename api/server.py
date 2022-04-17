@@ -13,7 +13,7 @@ class ImageProcessor(Resource):
   def post(self):
     """Handles image transformation requests
     
-    :return: A JSON response
+    :return: A JSON response containing the transformed image
     """
 
     req = request.get_json()
@@ -28,7 +28,7 @@ api.add_resource(ImageProcessor, '/')
 def main():
   """Hosts the ImageProcessor server"""
 
-  app.run(port=6969, debug=True)
+  app.run(port=2022, debug=True)
 
 if __name__ == '__main__':
   main()

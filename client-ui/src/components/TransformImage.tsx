@@ -8,7 +8,7 @@ import TransformationForm from './TransformationForm'
 /*** API endpoint ***/
 
 const api = axios.create({
-  baseURL: 'http://localhost:6969/'
+  baseURL: 'http://localhost:2022/'
 })
 
 /*** Image transformation component ***/
