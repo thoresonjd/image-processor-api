@@ -1,5 +1,5 @@
 import React from 'react'
-import { Zoom } from '@mui/material'
+import { Zoom, Box } from '@mui/material'
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 
 interface Props {
@@ -14,7 +14,10 @@ const DisplayImage: React.FC<Props> = ({image}) => {
           <img src={image} alt='display' className='image'/>
         </Zoom>
       ) : (
-        <ImageOutlinedIcon fontSize='large' />
+        <Box sx={{alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+          <ImageOutlinedIcon fontSize='large' />
+          Image Preview
+        </Box>
       )}
     </div>
   );
