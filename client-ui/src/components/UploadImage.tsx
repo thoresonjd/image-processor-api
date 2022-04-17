@@ -33,7 +33,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
 
   const selectedFileHandler = (event: React.BaseSyntheticEvent) => {
     let files = event.target.files
-    if (!files || !files[0] || !hasValidExtension(files[0].name)) 
+    if (!files || !files[0] || !hasValidExtension(files[0].name))
       return
     encodeBase64(event.target.files[0]).then(
       b64Image => setUploadedImage(b64Image)

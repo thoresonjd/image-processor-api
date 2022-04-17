@@ -16,7 +16,7 @@ const Rotate: React.FC<Props> = (props) => {
 
   useEffect(() => (
     props.setRotate(degrees)
-  ), [degrees])
+  ), [degrees, props])
 
   return (
     <Box sx={{display: 'flex', alignItems: 'center'}}>
