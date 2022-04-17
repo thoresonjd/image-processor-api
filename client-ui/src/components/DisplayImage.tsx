@@ -1,5 +1,6 @@
 import React from 'react'
 import { Zoom } from '@mui/material'
+import ImageIcon from '@mui/icons-material/Image';
 
 interface Props {
   image: string | undefined
@@ -10,10 +11,10 @@ const DisplayImage: React.FC<Props> = ({image}) => {
     <div className='display-image center'>
       {image ? (
         <Zoom in>
-          <img src={image} alt='image' className='image'/>
+          <img src={image} alt='display' className='image'/>
         </Zoom>
       ) : (
-        "Image Preview"
+        <ImageIcon fontSize='large' />
       )}
     </div>
   );
