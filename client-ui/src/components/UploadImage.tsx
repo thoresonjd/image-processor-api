@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Button } from '@mui/material'
 import UploadIcon from '@mui/icons-material/Upload'
 import SupportedExtensions from '../constants/SupportedExtensions'
@@ -8,12 +8,6 @@ interface Props {
 }
 
 const UploadImage: React.FC<Props> = ({setImage}) => {
-
-  const [uploadedImage, setUploadedImage] = useState<string | undefined>(undefined)  
-
-  useEffect(() => (
-    setImage(uploadedImage)
-  ), [uploadedImage, setImage])
 
   const hasValidExtension = (filename: string) => {
     let tokens = filename.split('.')
@@ -36,7 +30,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
     if (!files || !files[0] || !hasValidExtension(files[0].name))
       return
     encodeBase64(event.target.files[0]).then(
-      b64Image => setUploadedImage(b64Image)
+      b64Image => setImage(b64Image)
     )
   }
 
