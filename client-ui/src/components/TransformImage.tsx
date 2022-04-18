@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Box } from '@mui/material'
-import MimeTypes from '../constants/MimeTypes'
+import MIMETypes from '../constants/MIMETypes'
 import TransformationForm from './TransformationForm'
 
 /*** API endpoint ***/
@@ -54,9 +54,9 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   }
 
   const getExtensionFromMimeType = (b64: string) => {
-    for (var mimeType in MimeTypes) {
+    for (var mimeType in MIMETypes) {
       if (b64.indexOf(mimeType) === 0) {
-        return MimeTypes[mimeType];
+        return MIMETypes[mimeType];
       }
     }
   }

@@ -1,5 +1,5 @@
 const SupportedExtensions = [
-  'jpg', 'jpeg', 'png', 'gif'
+  'jpg', 'jpeg', 'png'
 ]
 
 export default SupportedExtensions
