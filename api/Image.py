@@ -12,9 +12,14 @@ class Image:
   def __init__(self, image: str) -> None:
     self.__image: PillowImage = self.__decode(image)
     self.__extension: str = self.__getExtension(image)
-    self.__tb: TransformationBuilder = TransformationBuilder()
 
   def __getExtension(self, image: str) -> str:
+    """Extracts the extension from the Base64 image
+    
+    :param image: Base64 string representation of an image
+    :return: The image's extension
+    """
+
     mimeTypes: dict = load(open("MIMETypes.json"))
     for mimeType in mimeTypes.keys():
       if image[0:len(mimeType)] == mimeType:
@@ -50,8 +55,9 @@ class Image:
     :param transformations: A list of transformations
     """
 
-    self.__tb.build(transformations)
-    tfs: list[Transformation] = self.__tb.getTransformations()
+    tb: TransformationBuilder = TransformationBuilder()
+    tb.build(transformations)
+    tfs: list[Transformation] = tb.getTransformations()
     for t in tfs:
       self.__image = t.transform(self.__image)
 
