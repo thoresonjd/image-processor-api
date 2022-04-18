@@ -9,6 +9,7 @@ class Image:
 
   def __init__(self, image) -> None:
     self.__image: PillowImage = self.__decode(image)
+    self.__tb: TransformationBuilder = TransformationBuilder()
 
   def __decode(self, image) -> PillowImage:
     """Converts a Base64 string representation of an image to a PIL Image
@@ -39,9 +40,8 @@ class Image:
     :param transformations: A list of transformations
     """
 
-    tb: TransformationBuilder = TransformationBuilder()
-    tb.build(transformations)
-    tfs: list[Transformation] = tb.getTransformations()
+    self.__tb.build(transformations)
+    tfs: list[Transformation] = self.__tb.getTransformations()
     for t in tfs:
       self.__image = t.transform(self.__image)
 
