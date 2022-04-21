@@ -1,4 +1,5 @@
-from Transformation import * 
+from Transformation import Transformation 
+from TransformationFactory import TransformationFactory
 
 class TransformationBuilder:
   """Builds a list of transformations to perform on an image"""
@@ -13,28 +14,10 @@ class TransformationBuilder:
     :return: A heterogeneous list of Transformation objects
     """
 
+    tf: TransformationFactory = TransformationFactory()
     for t in transformations:
-      match t:
-        case 'flip-horizontal':
-          self.__transformations.append(FlipHorizontal())
-        case 'flip-vertical':
-          self.__transformations.append(FlipVertical())
-        case {'resize': list}:
-          width: int = t['resize'][0]
-          height: int = t['resize'][1]
-          self.__transformations.append(Resize(width, height))
-        case {'rotate': float}:
-          self.__transformations.append(Rotate(t['rotate']))
-        case 'rotate-left':
-          self.__transformations.append(RotateLeft())
-        case 'rotate-right':
-          self.__transformations.append(RotateRight())
-        case 'thumbnail':
-          self.__transformations.append(Thumbnail())
-        case 'grayscale':
-          self.__transformations.append(Grayscale())
-        case {'saturate': float}:
-          self.__transformations.append(Saturate(t['saturate']))
+      self.__transformations.append(tf.getTransformation(t))
+      
 
   def getTransformations(self) -> list[Transformation]:
     """Retrieves a list of transformations
