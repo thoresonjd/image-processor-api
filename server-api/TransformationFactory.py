@@ -1,8 +1,15 @@
 from Transformation import *
 
 class TransformationFactory:
+  """Converts transformation requests to Transformation objects"""
 
-  def getTransformation(self, transformation):
+  def getTransformation(self, transformation) -> Transformation:
+    """Retrieves the correct Transformation object for a transformation request
+    
+    :param transformation: A JSON-esque transformation request
+    :return: A specific Transformation object
+    """
+    
     match transformation:
       case 'flip-horizontal':
         return FlipHorizontal()
@@ -24,3 +31,4 @@ class TransformationFactory:
         return Grayscale()
       case {'saturate': float}:
         return Saturate(transformation['saturate'])
+        
