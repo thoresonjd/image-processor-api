@@ -16,10 +16,10 @@ class TransformationBuilder:
 
     tf: TransformationFactory = TransformationFactory()
     for t in transformations:
-      self.__transformations.append(tf.getTransformation(t))
+      self.__transformations.append(tf.get_transformation(t))
       
 
-  def getTransformations(self) -> list[Transformation]:
+  def get_transformations(self) -> list[Transformation]:
     """Retrieves a list of transformations
     
     :return: A heterogeneous list of Transformation objects
