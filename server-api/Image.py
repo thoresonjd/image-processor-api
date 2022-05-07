@@ -54,7 +54,7 @@ class Image:
         """
 
         tb: TransformationBuilder = TransformationBuilder()
-        tb.build(transformations)
+        tb.build_transformations(transformations)
         tfs: list[Transformation] = tb.get_transformations()
         for t in tfs:
             self.__image = t.transform(self.__image)

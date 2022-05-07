@@ -4,7 +4,7 @@ from TransformationFactory import TransformationFactory
 class TransformationBuilder:
     """Builds a list of transformations to perform on an image"""
 
-    def build(self, transformations: list) -> None:
+    def build_transformations(self, transformations: list) -> None:
         """Converts a JSON-esque list of transformations to Transformation objects
     
         :param transformations: A JSON-esque list of transformations
