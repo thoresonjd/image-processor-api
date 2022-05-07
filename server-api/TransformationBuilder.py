@@ -4,9 +4,6 @@ from TransformationFactory import TransformationFactory
 class TransformationBuilder:
     """Builds a list of transformations to perform on an image"""
 
-    def __init__(self) -> None:
-        self.__transformations: list[Transformation] = []
-
     def build(self, transformations: list) -> None:
         """Converts a JSON-esque list of transformations to Transformation objects
     
@@ -15,8 +12,7 @@ class TransformationBuilder:
         """
 
         tf: TransformationFactory = TransformationFactory()
-        for t in transformations:
-            self.__transformations.append(tf.get_transformation(t))
+        self.__transformations = [tf.get_transformation(t) for t in transformations] 
       
 
     def get_transformations(self) -> list[Transformation]:
