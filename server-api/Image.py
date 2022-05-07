@@ -59,7 +59,7 @@ class Image:
         for t in tfs:
             self.__image = t.transform(self.__image)
 
-    def get_transformed_image(self) -> str:
+    def get_image(self) -> str:
         """Retrieves a Base64 string representation of an image
     
         :return: Base64 string representation of an image
