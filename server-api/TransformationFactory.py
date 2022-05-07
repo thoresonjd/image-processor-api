@@ -3,7 +3,8 @@ from Transformation import *
 class TransformationFactory:
     """Converts transformation requests to Transformation objects"""
 
-    def get_transformation(self, transformation) -> Transformation:
+    @staticmethod
+    def get_transformation(transformation) -> Transformation:
         """Retrieves the correct Transformation object for a transformation request
     
         :param transformation: A JSON-esque transformation request
