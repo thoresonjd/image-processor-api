@@ -21,17 +21,11 @@ const DownloadImage: React.FC<Props> = ({image}) => {
     saveAs(image, 'result.' + getExtension())
   }
 
-  const DownloadButton = () => {
-    return (
-      <Button color='secondary' onClick={() => download()}>
-        <DownloadIcon />
-        Download Image
-      </Button> 
-    );
-  }
-
   return (
-    <DownloadButton />
+    <Button color='secondary' onClick={() => download()}>
+      <DownloadIcon />
+      Download Image
+    </Button> 
   );
 }
 
