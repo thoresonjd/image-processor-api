@@ -34,28 +34,22 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
     )
   }
 
-  const UploadButton = () => {
-    return (
-      <>
-        <input
-          hidden
-          id="upload-image"
-          name="upload-image"
-          type="file"
-          onChange={selectedFileHandler}
-        />
-        <label htmlFor="upload-image">
-          <Button color='warning' variant='text' component='span'>
-            <UploadIcon />
-            Upload Image
-          </Button>
-        </label>
-      </>
-    ); 
-  }
-
   return (
-    <UploadButton />
+    <>
+      <input
+        hidden
+        id="upload-image"
+        name="upload-image"
+        type="file"
+        onChange={selectedFileHandler}
+      />
+      <label htmlFor="upload-image">
+        <Button color='warning' variant='text' component='span'>
+          <UploadIcon />
+          Upload Image
+        </Button>
+      </label>
+    </>
   );
 }
 
