@@ -46,7 +46,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   const postRequest = () => {
     let req = constructJsonPostRequest()
     api.post('/', req).then(res => {
-      let img = attachIdentifierPrefix(res.data['image'])
+      let img = attachMediaTypePrefix(res.data['image'])
       setTransformedImage(img)
     }).catch((err) => {
       redirect('/error')
@@ -61,13 +61,13 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     }
   }
 
-  const truncateIdentifierPrefix = (b64Image: string | undefined) => {
+  const truncateMediaTypePrefix = (b64Image: string | undefined) => {
     const pattern = /data:image\/.{3,4};base64,/
     let b64Truncated = b64Image?.replace(pattern, '')
     return b64Truncated
   }
 
-  const attachIdentifierPrefix = (b64Image: string | undefined) => {
+  const attachMediaTypePrefix = (b64Image: string | undefined) => {
     if (!b64Image) return
     let extension = getExtensionFromMimeType(b64Image)
     let b64Extended = 'data:image/'+ extension +';base64,' + b64Image
@@ -88,7 +88,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     if (saturation) transformations.push({'saturate': saturation})
 
     let jsonRequest = {
-      'image': truncateIdentifierPrefix(image),
+      'image': truncateMediaTypePrefix(image),
       'transformations': [...transformations]
     }
 
