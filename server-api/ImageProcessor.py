@@ -15,6 +15,10 @@ class ImageProcessor(Resource):
         # Extract JSON from POST request
         req: dict = request.get_json()
 
+        # Check if image exists
+        if 'image' not in req:
+            return 'ERROR: No image found', 400
+
         # Verify image
         imageVerifier: ImageVerifier = ImageVerifier()
         if not imageVerifier.is_verified_image(req['image']):
