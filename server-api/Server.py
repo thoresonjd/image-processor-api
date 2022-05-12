@@ -10,7 +10,7 @@ def main() -> None:
     api: Api = Api(app)
     cors: CORS = CORS(app)
     api.add_resource(ImageProcessor, '/')
-    app.run(port=2022, debug=True)
+    app.run(port=2022)
 
 if __name__ == '__main__':
     main()
