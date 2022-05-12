@@ -9,7 +9,7 @@ def main() -> None:
     app: Flask = Flask(__name__)
     api: Api = Api(app)
     cors: CORS = CORS(app)
-    api.add_resource(ImageProcessor, '/')
+    api.add_resource(ImageProcessor, '/image-processor/')
     app.run(port=2022)
 
 if __name__ == '__main__':
