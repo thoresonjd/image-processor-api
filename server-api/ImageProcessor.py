@@ -4,7 +4,7 @@ from Image import Image
 from ImageVerifier import ImageVerifier
 
 class ImageProcessor(Resource):
-    """Processes RESTful requests for image processing"""
+    """Processes RESTful HTTP requests for image processing"""
 
     def post(self) -> Response:
         """Handles image transformation requests
@@ -30,5 +30,4 @@ class ImageProcessor(Resource):
         transformedImage: str = image.get_image()
 
         # Generate image response
-        res: Response = jsonify({'image': transformedImage})
-        return res
+        return jsonify({'image': transformedImage})
