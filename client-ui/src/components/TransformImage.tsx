@@ -48,7 +48,8 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     api.post('/', req).then(res => {
       let img = attachMediaTypePrefix(res.data['image'])
       setTransformedImage(img)
-    }).catch((err) => {
+    }).catch(err => {
+      console.log(err.response.data, err.response.status)
       redirect('/error')
     })
   }
@@ -62,6 +63,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   }
 
   const truncateMediaTypePrefix = (b64Image: string | undefined) => {
+    if (!b64Image) return;
     const pattern = /data:image\/.{3,4};base64,/
     let b64Truncated = b64Image?.replace(pattern, '')
     return b64Truncated
