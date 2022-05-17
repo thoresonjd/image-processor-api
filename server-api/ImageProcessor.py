@@ -17,12 +17,12 @@ class ImageProcessor(Resource):
 
         # Check if image exists
         if 'image' not in req:
-            return 'ERROR: No image found', 400
+            return 'ERROR: No image provided', 400
 
         # Verify image
         imageVerifier: ImageVerifier = ImageVerifier()
         if not imageVerifier.is_verified_image(req['image']):
-            return 'ERROR: Not a valid image', 400
+            return 'ERROR: Unsupported media type', 400
 
         # Create and transform image
         image: Image = Image(req['image'])
