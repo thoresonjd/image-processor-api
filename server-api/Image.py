@@ -9,6 +9,15 @@ class Image:
     """Allows Base64 image manipulation"""
 
     def __init__(self, image: str) -> None:
+        """Instantiate a PIL Image
+        
+        Create a PIL Image to act as the data wrapped by this class
+        Convert the PIL Image mode to RGB for consistent manipulation
+        Extract the image extension for writing out
+
+        :param image: Base64 string representation of an image
+        """
+
         self.__image: PillowImage = self.__decode(image)
         self.__image = self.__image.convert(mode='RGB')
         self.__extension: str = self.__get_extension(image)
