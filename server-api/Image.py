@@ -6,10 +6,10 @@ from io import BytesIO
 from json import load
 
 class Image:
-    """Allows Base64 image manipulation"""
+    """A PIL Image wrapper class that allows Base64 image manipulation"""
 
     def __init__(self, image: str) -> None:
-        """Instantiate a PIL Image
+        """Instantiate and configure the underlying PIL Image
         
         Create a PIL Image to act as the data wrapped by this class
         Convert the PIL Image mode to RGB for consistent manipulation
