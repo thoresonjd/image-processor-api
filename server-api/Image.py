@@ -10,6 +10,7 @@ class Image:
 
     def __init__(self, image: str) -> None:
         self.__image: PillowImage = self.__decode(image)
+        self.__image = self.__image.convert(mode='RGB')
         self.__extension: str = self.__get_extension(image)
 
     def __get_extension(self, image: str) -> str:
@@ -52,6 +53,8 @@ class Image:
 
         :param transformations: A list of transformations
         """
+
+        print(self.__image.mode)
 
         tb: TransformationBuilder = TransformationBuilder()
         tb.build_transformations(transformations)
