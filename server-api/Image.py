@@ -63,8 +63,6 @@ class Image:
         :param transformations: A list of transformations
         """
 
-        print(self.__image.mode)
-
         tb: TransformationBuilder = TransformationBuilder()
         tb.build_transformations(transformations)
         tfs: list[Transformation] = tb.get_transformations()
