@@ -23,7 +23,9 @@ interface Props {
   thumbnail: boolean,
   setThumbnail: Function
   grayscale: boolean,
-  setGrayscale: Function
+  setGrayscale: Function,
+  grayscalePercentage: number,
+  setGrayscalePercentage: Function,
   saturation: number,
   setSaturation: Function
 }
@@ -47,7 +49,12 @@ const TransformationForm: React.FC<Props> = (props) => {
         setRotateRight={props.setRotateRight}
       />
       <Thumbnail thumbnail={props.thumbnail} setThumbnail={props.setThumbnail}/>
-      <Grayscale grayscale={props.grayscale} setGrayscale={props.setGrayscale}/>
+      <Grayscale 
+        grayscale={props.grayscale}
+        grayscalePercentage={props.grayscalePercentage}
+        setGrayscale={props.setGrayscale}
+        setGrayscalePercentage={props.setGrayscalePercentage}
+      />
       <Saturation saturation={props.saturation} setSaturation={props.setSaturation}/>
     </Box>
   );

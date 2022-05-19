@@ -35,6 +35,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
   const [rotateRight, setRotateRight] = useState<boolean>(false)
   const [thumbnail, setThumbnail] = useState<boolean>(false)
   const [grayscale, setGrayscale] = useState<boolean>(false)
+  const [grayscalePercentage, setGrayscalePercentage] = useState<number>(0)
   const [saturation, setSaturation] = useState<number>(1)
 
   /*** Handle image transformations ***/
@@ -87,6 +88,7 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     if (rotate) transformations.push({'rotate': rotate})
     if (thumbnail) transformations.push('thumbnail')
     if (grayscale) transformations.push('grayscale')
+    if (grayscalePercentage) transformations.push({'grayscale-%': grayscalePercentage})
     if (saturation) transformations.push({'saturate': saturation})
 
     let jsonRequest = {
@@ -117,6 +119,8 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
         setThumbnail={setThumbnail}
         grayscale={grayscale}
         setGrayscale={setGrayscale}
+        grayscalePercentage={grayscalePercentage}
+        setGrayscalePercentage={setGrayscalePercentage}
         saturation={saturation}
         setSaturation={setSaturation}
       />
