@@ -13,7 +13,7 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
     let tokens = filename.split('.')
     if (tokens.length < 2)
       return false
-    return SupportedExtensions.includes(tokens[1])
+    return SupportedExtensions.includes(tokens[tokens.length - 1])
   }
 
   const encodeBase64 = (file: any) => {
