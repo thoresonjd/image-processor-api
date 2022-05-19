@@ -127,6 +127,33 @@ class Grayscale(Transformation):
     
         return ImageOps.grayscale(image)
 
+class GrayscalePercentage(Transformation):
+    """Grayscale percentage transformation"""
+
+    def __init__(self, percentage: int) -> None:
+        """Sets the percentage value for the GrayscalePercentage transformation"""
+
+        self.__percentage: int = percentage
+
+    def transform(self, image: PillowImage) -> PillowImage:
+        """Converts an image to a specified grayscale percentage
+    
+        :param image: An image object
+        :return: A specified grayscaled version of an image object
+        """
+
+        width, height = image.size
+        grayscaled = PillowImage.new('L', (width, height))
+
+        for x in range(width):
+            for y in range(height):
+                r, g, b = image.getpixel((x, y))
+                value = self.__percentage * (r + g + b)
+                value = int(value)
+                grayscaled.putpixel((x, y), value)
+        
+        return grayscaled.convert('RGB')
+
 class Saturate(Transformation):
     """Saturate transformation"""
 
