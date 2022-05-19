@@ -30,6 +30,8 @@ class TransformationFactory:
                 return Thumbnail()
             case 'grayscale':
                 return Grayscale()
+            case {'grayscale-%': int}:
+                return GrayscalePercentage(transformation['grayscale-%'])
             case {'saturate': float}:
                 return Saturate(transformation['saturate'])
         
