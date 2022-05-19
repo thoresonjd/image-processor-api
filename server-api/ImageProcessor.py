@@ -10,6 +10,7 @@ class ImageProcessor(Resource):
         """Handles image transformation requests
     
         :return: A JSON response containing the transformed image
+        :return: An error response message
         """
 
         # Extract JSON from POST request
