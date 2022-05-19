@@ -1,11 +1,13 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import Flip from './transformations/Flip'
-import Resize from './transformations/Resize'
-import Rotate from './transformations/Rotate'
-import Thumbnail from './transformations/Thumbnail'
-import Grayscale from './transformations/Grayscale'
-import Saturation from './transformations/Saturation'
+import {
+  Flip,
+  Resize,
+  Rotate,
+  Thumbnail,
+  Grayscale,
+  Saturation
+} from './transformations'
 
 interface Props {
   flipHorizontal: boolean,
