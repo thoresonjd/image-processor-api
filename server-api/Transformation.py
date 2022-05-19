@@ -55,7 +55,7 @@ class Resize(Transformation):
         """
 
         size: tuple = (self.__width, self.__height)
-        return image.resize(size)
+        return image.resize(size, resample=PillowImage.ANTIALIAS)
 
 class Rotate(Transformation):
     """Rotate transformation"""
@@ -112,7 +112,7 @@ class Thumbnail(Transformation):
         """
     
         img: PillowImage = image.copy()
-        img.thumbnail((100,100))
+        img.thumbnail((100, 100), resample=PillowImage.ANTIALIAS)
         return img
 
 class Grayscale(Transformation):
