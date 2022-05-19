@@ -2,11 +2,12 @@
   "image": "image",
   "transformations": [
     "thumbnail",
-    "grayscale",
     "flip-horizontal",
     "flip-vertical",
     "rotate-left",
     "rotate-right",
+    "grayscale",
+    {"grayscale-%": "%"},
     {"rotate": "degrees"},
     {"resize": ["width", "height"]},
     {"saturate": "value"}
