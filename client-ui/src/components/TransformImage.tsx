@@ -101,7 +101,21 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
   }
 
   const resetImage = () => {
+    if (!origImage || image === origImage) return
     setImage(origImage)
+  }
+
+  const clearInputFields = () => {
+    setFlipHorizontal(false)
+    setFlipVertical(false)
+    setResize([])
+    setRotate(0)
+    setRotateLeft(false)
+    setRotateRight(false)
+    setThumbnail(false)
+    setGrayscale(false)
+    setGrayscalePercentage(0)
+    setSaturation(1)
   }
 
   return (
@@ -130,13 +144,19 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
         setSaturation={setSaturation}
       />
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button color='warning' variant='outlined'onClick={() => postRequest()}>
+        <Button color='warning' variant='outlined' onClick={() => postRequest() }>
           POST request
         </Button>
       </Box>
       <br />
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button color='error' variant='outlined'onClick={() => resetImage()}>
+        <Button color='secondary' variant='outlined' onClick={() => clearInputFields() }>
+          Clear Fields
+        </Button>
+      </Box>
+      <br />
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <Button color='error' variant='outlined' onClick={() => resetImage()}>
           Reset Image
         </Button>
       </Box>
