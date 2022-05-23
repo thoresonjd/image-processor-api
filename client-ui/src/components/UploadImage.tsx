@@ -4,10 +4,11 @@ import UploadIcon from '@mui/icons-material/Upload'
 import SupportedExtensions from '../constants/SupportedExtensions'
 
 interface Props {
-  setImage: Function
+  setImage: Function,
+  setOrigImage: Function
 }
 
-const UploadImage: React.FC<Props> = ({setImage}) => {
+const UploadImage: React.FC<Props> = ({setImage, setOrigImage}) => {
 
   const hasValidExtension = (filename: string) => {
     let tokens = filename.split('.')
@@ -30,7 +31,10 @@ const UploadImage: React.FC<Props> = ({setImage}) => {
     if (!files || !files[0] || !hasValidExtension(files[0].name))
       return
     encodeBase64(event.target.files[0]).then(
-      b64Image => setImage(b64Image)
+      b64Image => {
+        setImage(b64Image) 
+        setOrigImage(b64Image)
+      }
     )
   }
 

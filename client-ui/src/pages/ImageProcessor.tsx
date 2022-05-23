@@ -5,17 +5,18 @@ import { UploadImage, DownloadImage, TransformImage, DisplayImage } from '../com
 const ImageProcessor: React.FC = () => {
 
   const [image, setImage] = useState<string | undefined>(undefined)
+  const [origImage, setOrigImage] = useState<string | undefined>(undefined)
 
   return (
     <>
       <AppBar position='static'>
         <Toolbar sx={{margin: '0 auto'}}>
-          <UploadImage setImage={setImage} />
+          <UploadImage setImage={setImage} setOrigImage={setOrigImage}/>
           <DownloadImage image={image}/>
         </Toolbar>
       </AppBar>
       <div className='dashboard'>
-        <TransformImage image={image} setImage={setImage}/>
+        <TransformImage image={image} origImage={origImage} setImage={setImage}/>
         <DisplayImage image={image}/>
       </div>
     </>

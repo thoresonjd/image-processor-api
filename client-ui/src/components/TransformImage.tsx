@@ -15,10 +15,11 @@ const api = axios.create({
 
 interface Props {
   image: string | undefined,
+  origImage: string | undefined,
   setImage: Function
 }
 
-const TransformImage: React.FC<Props> = ({image, setImage}) => {
+const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
 
   /*** Redirect handler ***/
 
@@ -99,6 +100,10 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
     return jsonRequest
   }
 
+  const resetImage = () => {
+    setImage(origImage)
+  }
+
   return (
     <div className='transformation-tools'>
       <h1>Transformations</h1>
@@ -127,6 +132,12 @@ const TransformImage: React.FC<Props> = ({image, setImage}) => {
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
         <Button color='warning' variant='outlined'onClick={() => postRequest()}>
           POST request
+        </Button>
+      </Box>
+      <br />
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <Button color='error' variant='outlined'onClick={() => resetImage()}>
+          Reset Image
         </Button>
       </Box>
     </div>
