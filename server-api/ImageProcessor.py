@@ -10,7 +10,7 @@ class ImageProcessor(Resource):
         """Handles image transformation requests
     
         :return: A JSON response containing the transformed image
-        :return: An error response message
+        :return: An error response message w/ status 400 BAD REQUEST
         """
 
         # Extract JSON from POST request
