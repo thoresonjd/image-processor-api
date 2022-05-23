@@ -104,18 +104,18 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
 
   /*** Clear input fields ***/
 
-  const clearInputFields = () => {
-    setFlipHorizontal(false)
-    setFlipVertical(false)
-    setResize([])
-    setRotate(0)
-    setRotateLeft(false)
-    setRotateRight(false)
-    setThumbnail(false)
-    setGrayscale(false)
-    setGrayscalePercentage(0)
-    setSaturation(1)
-  }
+  // const clearInputFields = () => {
+  //   setFlipHorizontal(false)
+  //   setFlipVertical(false)
+  //   setResize([])
+  //   setRotate(0)
+  //   setRotateLeft(false)
+  //   setRotateRight(false)
+  //   setThumbnail(false)
+  //   setGrayscale(false)
+  //   setGrayscalePercentage(0)
+  //   setSaturation(1)
+  // }
 
   /*** Render ***/
 
@@ -150,12 +150,12 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
         </Button>
       </Box>
       <br />
-      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+      {/* <Box sx={{display: 'flex', justifyContent: 'center'}}>
         <Button color='secondary' variant='outlined' onClick={() => clearInputFields() }>
           Clear Fields
         </Button>
       </Box>
-      <br />
+      <br /> */}
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
         <Button color='error' variant='outlined' onClick={() => resetImage()}>
           Reset Image
