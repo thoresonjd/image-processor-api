@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Box } from '@mui/material'
@@ -27,7 +27,6 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
 
   /*** Transformations ***/
 
-  const [transformedImage, setTransformedImage] = useState<string | undefined>(image)
   const [flipHorizontal, setFlipHorizontal] = useState<boolean>(false)
   const [flipVertical, setFlipVertical] = useState<boolean>(false)
   const [resize, setResize] = useState<number[]>([])
@@ -41,15 +40,11 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
 
   /*** Handle image transformations ***/
 
-  useEffect(() => (
-    setImage(transformedImage)
-  ), [transformedImage, setImage])
-
   const postRequest = () => {
     let req = constructJsonPostRequest()
     api.post('/', req).then(res => {
       let img = attachMediaTypePrefix(res.data['image'])
-      setTransformedImage(img)
+      setImage(img)
     }).catch(err => {
       console.log(err.response.data, err.response.status)
       redirect('/error')
@@ -100,10 +95,14 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
     return jsonRequest
   }
 
+  /*** Reset image to original ***/
+
   const resetImage = () => {
     if (!origImage || image === origImage) return
     setImage(origImage)
   }
+
+  /*** Clear input fields ***/
 
   const clearInputFields = () => {
     setFlipHorizontal(false)
@@ -117,6 +116,8 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
     setGrayscalePercentage(0)
     setSaturation(1)
   }
+
+  /*** Render ***/
 
   return (
     <div className='transformation-tools'>
