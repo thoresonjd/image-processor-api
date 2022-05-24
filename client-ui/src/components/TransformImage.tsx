@@ -85,7 +85,7 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
     if (thumbnail) transformations.push('thumbnail')
     if (grayscale) transformations.push('grayscale')
     if (grayscalePercentage) transformations.push({'grayscale-%': grayscalePercentage})
-    if (saturation) transformations.push({'saturate': saturation})
+    if (saturation !== 1) transformations.push({'saturate': saturation})
 
     let jsonRequest = {
       'image': truncateMediaTypePrefix(image),
