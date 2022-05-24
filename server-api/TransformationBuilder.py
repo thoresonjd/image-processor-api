@@ -11,8 +11,7 @@ class TransformationBuilder:
         :return: A heterogeneous list of Transformation objects
         """
 
-        self.__transformations: list[Transformation] = [TransformationFactory.get_transformation(t) for t in transformations]
-      
+        self.__transformations: list[Transformation] = [transformation for t in transformations if (transformation := TransformationFactory.get_transformation(t))]
 
     def get_transformations(self) -> list[Transformation]:
         """Retrieves a list of transformations
