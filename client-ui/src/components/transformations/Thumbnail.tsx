@@ -9,7 +9,7 @@ interface Props {
 const Thumbnail: React.FC<Props> = (props) => {
   return (
     <Box sx={{display: 'flex', alignItems: 'center'}}>
-      <Box sx={{width: '25%'}}>Tumbnail</Box>
+      <Box sx={{width: '25%'}}>Thumbnail</Box>
       <Box sx={{width: '75%', padding: 0}}>
         <FormControlLabel
           label='' 
