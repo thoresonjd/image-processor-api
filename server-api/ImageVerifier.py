@@ -6,7 +6,7 @@ class ImageVerifier:
     def __init__(self) -> None:
         self.__mimeTypes: dict = load(open("MIMETypes.json"))
 
-    def is_verified_image(self, image: str) -> bool:
+    def is_supported_image(self, image: str) -> bool:
         """Checks a Base64 image's MIME type for validity
     
         :param image: A Base64 string representation of an image
