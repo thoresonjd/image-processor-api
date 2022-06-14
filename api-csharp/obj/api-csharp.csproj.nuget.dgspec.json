@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {}
+    "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {
+    "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
+        "projectUniqueName": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
         "projectName": "api-csharp",
-        "projectPath": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
+        "projectPath": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
         "packagesPath": "C:\\Users\\jdtii\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\obj\\",
+        "outputPath": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jdtii\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -50,6 +56,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

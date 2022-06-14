@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "T9HuwySVjTJleV6cktuhT5s3PGj1SvnfAVx+gph7S8HCKbGNcS2yEB3S7QlwAg5jp70mHiMetDobDhNE3/OWFQ==",
+  "dgSpecHash": "kX5tC6rblY3B9TMfraDxabpsppiB5QYY34ffRadEVruDcsBe2wt88CFiY5PhJKkniihmpyTKCGVoVrvmimacxg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jdtii\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\jdtii\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\jdtii\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\jdtii\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\jdtii\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\jdtii\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
   "logs": []
 }
