@@ -1,0 +1,15 @@
+C:\Users\jdtii\source\repos\image-processor\api-csharp\bin\Debug\net6.0\api-csharp.exe
+C:\Users\jdtii\source\repos\image-processor\api-csharp\bin\Debug\net6.0\api-csharp.deps.json
+C:\Users\jdtii\source\repos\image-processor\api-csharp\bin\Debug\net6.0\api-csharp.runtimeconfig.json
+C:\Users\jdtii\source\repos\image-processor\api-csharp\bin\Debug\net6.0\api-csharp.dll
+C:\Users\jdtii\source\repos\image-processor\api-csharp\bin\Debug\net6.0\api-csharp.pdb
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.csproj.AssemblyReference.cache
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.AssemblyInfoInputs.cache
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.AssemblyInfo.cs
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.csproj.CoreCompileInputs.cache
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.dll
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\refint\api-csharp.dll
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.pdb
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\api-csharp.genruntimeconfig.cache
+C:\Users\jdtii\source\repos\image-processor\api-csharp\obj\Debug\net6.0\ref\api-csharp.dll
