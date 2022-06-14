@@ -8,10 +8,10 @@ namespace api_csharp.Controllers;
 public class ImageProcessorController : ControllerBase {
 
     [HttpGet]
-    public ImageModel Get() {
+    public ObjectResult Get() {
         ImageModel response = new ImageModel();
         response.image = "ImageModel from ImageProcessor";
-        return response;
+        return Ok(response);
     }
 
     // [HttpPost]
