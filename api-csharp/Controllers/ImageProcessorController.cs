@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ImageProcessor.Models;
 
-namespace api_csharp.Controllers;
+namespace ImageProcessor.Controllers;
 
 [ApiController]
 [Route("image-processor")]
@@ -15,6 +15,6 @@ public class ImageProcessorController : ControllerBase {
     }
 
     // [HttpPost]
-    // public ImageModel Post() {
+    // public ObjectResult Post() {
     // }
 }

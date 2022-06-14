@@ -1,4 +1,4 @@
-namespace api_csharp;
+namespace ImageProcessor.Models;
 
 public class WeatherForecast
 {
