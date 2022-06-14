@@ -1,14 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace api_csharp.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("image-processor")]
 public class ImageProcessor : ControllerBase {
 
-    private readonly ILogger<ImageProcessor> _logger;
-
-    public ImageProcessor(ILogger<ImageProcessor> logger) {
-        _logger = logger;
+    [HttpGet]
+    public OkObjectResult Get() {
+        return Ok("Image Processor");
     }
 }

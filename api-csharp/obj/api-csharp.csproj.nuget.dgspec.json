@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {}
+    "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {}
   },
   "projects": {
-    "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {
+    "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
+        "projectUniqueName": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
         "projectName": "api-csharp",
-        "projectPath": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
+        "projectPath": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
         "packagesPath": "C:\\Users\\jdtii\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\obj\\",
+        "outputPath": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jdtii\\AppData\\Roaming\\NuGet\\NuGet.Config",

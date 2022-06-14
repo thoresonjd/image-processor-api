@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kX5tC6rblY3B9TMfraDxabpsppiB5QYY34ffRadEVruDcsBe2wt88CFiY5PhJKkniihmpyTKCGVoVrvmimacxg==",
+  "dgSpecHash": "IUOMb9U6Lqdv3U0CvT0+b6OoqSvGlH6OIaZTQO+pWbTXyffj1Z5G6q25Q45wTH0oFHMpqqjEi3rMPE5EDWQ06Q==",
   "success": true,
-  "projectFilePath": "c:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
+  "projectFilePath": "C:\\Users\\jdtii\\source\\repos\\image-processor\\api-csharp\\api-csharp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jdtii\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\jdtii\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
