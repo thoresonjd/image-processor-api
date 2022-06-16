@@ -7,9 +7,9 @@
     "rotate-left",
     "rotate-right",
     "grayscale",
-    {"grayscale-%": "%"},
-    {"rotate": "degrees"},
-    {"resize": ["width", "height"]},
-    {"saturate": "value"}
+    "grayscale-percentage(%)",
+    "rotate(degrees)",
+    "resize(width, height)",
+    "saturate(value)"
   ]
 }
