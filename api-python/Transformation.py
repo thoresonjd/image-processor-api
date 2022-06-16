@@ -60,13 +60,13 @@ class Resize(Transformation):
 class Rotate(Transformation):
     """Rotate transformation"""
 
-    def __init__(self, degress: float):
+    def __init__(self, degrees: float):
         """Sets the degree of rotation for the Rotate transformation
     
         :param degrees: The degree of rotation
         """
     
-        self.__degrees: float = degress
+        self.__degrees: float = degrees
 
     def transform(self, image: PillowImage) -> PillowImage:
         """Rotates an image
@@ -130,10 +130,10 @@ class Grayscale(Transformation):
 class GrayscalePercentage(Transformation):
     """Grayscale percentage transformation"""
 
-    def __init__(self, percentage: int) -> None:
+    def __init__(self, percentage: float) -> None:
         """Sets the percentage value for the GrayscalePercentage transformation"""
 
-        self.__percentage: int = percentage
+        self.__percentage: float = percentage
 
     def transform(self, image: PillowImage) -> PillowImage:
         """Converts an image to a specified grayscale percentage
