@@ -10,7 +10,7 @@ public class ImageProcessorController : ControllerBase {
     [HttpGet]
     public ObjectResult Get() {
         ImageResponse response = new ImageResponse();
-        response.image = "ImageModel from ImageProcessor";
+        response.image = "A string representation of a base64 encoded image will appear here";
         return Ok(response);
     }
 
