@@ -78,14 +78,14 @@ const TransformImage: React.FC<Props> = ({image, origImage, setImage}) => {
 
     if (flipHorizontal) transformations.push('flip-horizontal')
     if (flipVertical) transformations.push('flip-vertical')
-    if (resize.length === 2) transformations.push({'resize': resize})
+    if (resize.length === 2) transformations.push('resize(' + resize[0] + ',' + resize[1] + ')')
     if (rotateLeft) transformations.push('rotate-left')
     if (rotateRight) transformations.push('rotate-right')
-    if (rotate) transformations.push({'rotate': rotate})
+    if (rotate) transformations.push('rotate(' + rotate + ')')
     if (thumbnail) transformations.push('thumbnail')
     if (grayscale) transformations.push('grayscale')
-    if (grayscalePercentage) transformations.push({'grayscale-%': grayscalePercentage})
-    if (saturation !== 1) transformations.push({'saturate': saturation})
+    if (grayscalePercentage) transformations.push('grayscale-percentage(' + grayscalePercentage + ')')
+    if (saturation !== 1) transformations.push('saturate(' + saturation + ')')
 
     let jsonRequest = {
       'image': truncateMediaTypePrefix(image),
