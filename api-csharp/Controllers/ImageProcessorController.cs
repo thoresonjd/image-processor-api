@@ -16,6 +16,14 @@ public class ImageProcessorController : ControllerBase {
 
     [HttpPost]
     public ObjectResult ProcessImage([FromBody] ImageRequest request) {
-        return Ok("Test");
+        
+        
+        for (int i = 0; i < request.transformations.Count; i++) {
+            Console.WriteLine(request.transformations[i]);
+        }
+
+        ImageResponse response = new ImageResponse();
+        response.image = request.image;
+        return Ok(response);
     }
 }

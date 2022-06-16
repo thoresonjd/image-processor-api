@@ -2,7 +2,7 @@ namespace ImageProcessor.Models;
 
 public class ImageRequest {
     
-    public string? image { get; set; }
+    public string image { get; set; } = string.Empty;
 
-    public List<string>? transformations { get; set; }
+    public List<string> transformations { get; set; } = new List<string>();
 }
