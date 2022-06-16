@@ -9,12 +9,13 @@ public class ImageProcessorController : ControllerBase {
 
     [HttpGet]
     public ObjectResult Get() {
-        ImageModel response = new ImageModel();
+        ImageResponse response = new ImageResponse();
         response.image = "ImageModel from ImageProcessor";
         return Ok(response);
     }
 
-    // [HttpPost]
-    // public ObjectResult Post() {
-    // }
+    [HttpPost]
+    public ObjectResult ProcessImage([FromBody] ImageRequest request) {
+        return Ok("Test");
+    }
 }

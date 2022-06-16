@@ -1,5 +1,6 @@
 namespace ImageProcessor.Models;
 
-public class ImageModel {
+public class ImageResponse {
+    
     public string image { get; set; } = string.Empty;
 }
