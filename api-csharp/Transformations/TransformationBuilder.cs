@@ -9,8 +9,11 @@ class TransformationBuilder {
     }
 
     public void buildTransformations(List<string> transformations) {
-        foreach(string transformation in transformations)
-            this.transformations.Add(TransformationFactory.getTransformation(transformation));
+        foreach(string t in transformations) {
+            ITransformation? transformation = TransformationFactory.getTransformation(t);
+            if (transformation is not null)
+                this.transformations.Add(transformation);
+        }
     }
 
     public List<ITransformation> getTransformations() {
