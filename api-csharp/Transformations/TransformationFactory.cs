@@ -22,6 +22,10 @@ class TransformationFactory {
                 end = t.IndexOf(')');
                 int degrees = int.Parse(t.Substring(start + 1, end - start - 1));
                 return new Rotate(degrees);
+            case "rotate-left":
+                return new RotateLeft();
+            case "rotate-right":
+                return new RotateRight();
             default:
                 return null;
         }
