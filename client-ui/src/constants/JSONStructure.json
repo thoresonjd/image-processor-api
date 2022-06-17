@@ -9,7 +9,7 @@
     "grayscale",
     "grayscale-percentage(%)",
     "rotate(degrees)",
-    "resize(width, height)",
+    "resize(width,height)",
     "saturate(value)"
   ]
 }
