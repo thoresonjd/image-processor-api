@@ -2,10 +2,21 @@ using System.Text.RegularExpressions;
 
 namespace ImageProcessor.Transformations;
 
-class TransformationFactory {
-
-    public static ITransformation? getTransformation(string transformation) {
-        switch (transformation) {
+/// <summary>
+/// TransformationFactory<br />
+/// Converts transformation string requests to ITransformation commands
+/// </summary>
+class TransformationFactory 
+{
+    /// <summary>
+    /// Converts a transformation string request to an ITransformation command
+    /// </summary>
+    /// <param name="transformation"></param>
+    /// <returns>An ITransformation command if matched, null otherwise</returns>
+    public static ITransformation? getTransformation(string transformation) 
+    {
+        switch (transformation) 
+        {
             case "flip-horizontal":
                 return new FlipHorizontal();
             case "flip-vertical":
