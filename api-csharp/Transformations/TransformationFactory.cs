@@ -26,6 +26,8 @@ class TransformationFactory {
                 return new RotateLeft();
             case "rotate-right":
                 return new RotateRight();
+            case "thumbnail":
+                return new Thumbnail();
             default:
                 return null;
         }
