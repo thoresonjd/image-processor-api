@@ -17,6 +17,6 @@ class TransformationBuilder {
     }
 
     public List<ITransformation> getTransformations() {
-        return this.transformations;
+        return new List<ITransformation>(this.transformations);
     }
 }
