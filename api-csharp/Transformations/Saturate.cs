@@ -6,7 +6,7 @@ class Saturate : ITransformation {
 
     public Saturate() {}
 
-    public SharpImage transform(SharpImage image) {
-        return image;
+    public void transform(ref SharpImage image) {
+    
     }
 }

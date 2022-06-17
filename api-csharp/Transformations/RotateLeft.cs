@@ -6,7 +6,7 @@ class RotateLeft : ITransformation {
 
     public RotateLeft() {}
 
-    public SharpImage transform(SharpImage image) {
-        return image;
+    public void transform(ref SharpImage image) {
+        
     }
 }

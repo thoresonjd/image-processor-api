@@ -6,7 +6,7 @@ class Thumbnail : ITransformation {
 
     public Thumbnail() {}
 
-    public SharpImage transform(SharpImage image) {
-        return image;
+    public void transform(ref SharpImage image) {
+    
     }
 }

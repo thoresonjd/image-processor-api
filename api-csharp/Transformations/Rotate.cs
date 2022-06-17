@@ -6,7 +6,7 @@ class Rotate : ITransformation {
 
     public Rotate() {}
 
-    public SharpImage transform(SharpImage image) {
-        return image;
+    public void transform(ref SharpImage image) {
+        
     }
 }
