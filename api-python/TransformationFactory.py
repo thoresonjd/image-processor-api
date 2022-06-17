@@ -21,7 +21,7 @@ class TransformationFactory:
             width: int = int(dimensions[0])
             height: int = int(dimensions[1])
             return Resize(width, height)
-        elif re.fullmatch('rotate\(-?\d+\)', transformation):
+        elif re.fullmatch('rotate\(-?([0-9]*[.])?[0-9]+\)', transformation):
             degrees: int = int(transformation[7:-1])
             return Rotate(degrees)
         elif transformation == 'rotate-left':

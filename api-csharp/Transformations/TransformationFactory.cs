@@ -17,8 +17,13 @@ class TransformationFactory {
                 uint width = uint.Parse(dimensions[0]);
                 uint height = uint.Parse(dimensions[1]);
                 return new Resize(width, height);
+            case string t when new Regex(@"rotate\(-?([0-9]*[.])?[0-9]+\)").IsMatch(t):
+                start = t.IndexOf('(');
+                end = t.IndexOf(')');
+                int degrees = int.Parse(t.Substring(start + 1, end - start - 1));
+                return new Rotate(degrees);
+            default:
+                return null;
         }
-
-        return null;
     }
 }
