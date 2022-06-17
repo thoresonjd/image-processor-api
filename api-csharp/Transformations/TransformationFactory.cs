@@ -28,6 +28,18 @@ class TransformationFactory {
                 return new RotateRight();
             case "thumbnail":
                 return new Thumbnail();
+            case "grayscale":
+                return new Grayscale();
+            case string t when new Regex(@"grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)").IsMatch(t):
+                start = t.IndexOf('(');
+                end = t.IndexOf(')');
+                float percentage = float.Parse(t.Substring(start + 1, end - start - 1));
+                return new GrayscalePercentage(percentage);
+            case string t when new Regex(@"saturate\(-?([0-9]*[.])?[0-9]+\)").IsMatch(t):
+                start = t.IndexOf('(');
+                end = t.IndexOf(')');
+                float saturation = float.Parse(t.Substring(start + 1, end - start - 1));
+                return new Saturate(saturation);
             default:
                 return null;
         }

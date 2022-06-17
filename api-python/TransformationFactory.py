@@ -38,29 +38,4 @@ class TransformationFactory:
         elif re.fullmatch('saturate\(-?([0-9]*[.])?[0-9]+\)', transformation):
             saturation: float = float(transformation[9:-1])
             return Saturate(saturation)
-
-        # match transformation:
-        #     case 'flip-horizontal':
-        #         return FlipHorizontal()
-        #     case 'flip-vertical':
-        #         return FlipVertical()
-        #     case 'resize(100,100)':
-        #         dimensions: list = transformation[7:-1].split(',')
-        #         width: int = int(dimensions[0])
-        #         height: int = int(dimensions[1])
-        #         return Resize(width, height)
-        #     case {'rotate': float}:
-        #         return Rotate(transformation['rotate'])
-        #     case 'rotate-left':
-        #         return RotateLeft()
-        #     case 'rotate-right':
-        #         return RotateRight()
-        #     case 'thumbnail':
-        #         return Thumbnail()
-        #     case 'grayscale':
-        #         return Grayscale()
-        #     case {'grayscale-%': int}:
-        #         return GrayscalePercentage(transformation['grayscale-%'])
-        #     case {'saturate': float}:
-        #         return Saturate(transformation['saturate'])
         
