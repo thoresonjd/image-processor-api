@@ -14,8 +14,8 @@ class TransformationFactory {
                 int start = t.IndexOf('(');
                 int end = t.IndexOf(')');
                 string[] dimensions = t.Substring(start + 1, end - start - 1).Split(",");
-                int width = int.Parse(dimensions[0]);
-                int height = int.Parse(dimensions[1]);
+                uint width = uint.Parse(dimensions[0]);
+                uint height = uint.Parse(dimensions[1]);
                 return new Resize(width, height);
         }
 

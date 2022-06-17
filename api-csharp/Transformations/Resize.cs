@@ -5,16 +5,16 @@ namespace ImageProcessor.Transformations;
 
 class Resize : ITransformation {
 
-    private int width;
+    private uint width;
 
-    private int height;
+    private uint height;
 
-    public Resize(int width, int height) {
+    public Resize(uint width, uint height) {
         this.width = width;
         this.height = height;
     }
 
     public void transform(ref SharpImage image) {
-        image.Mutate(x => x.Resize(width, height));
+        image.Mutate(x => x.Resize((int)width, (int)height));
     }
 }
