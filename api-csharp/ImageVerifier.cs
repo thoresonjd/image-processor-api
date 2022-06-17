@@ -17,7 +17,7 @@ class ImageVerifier
     public ImageVerifier() 
     {
         string json = File.ReadAllText("MIMETypes.json");
-        supportedTypes = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+        this.supportedTypes = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ class ImageVerifier
     /// <returns>True if image is of a supported type, false otherwise</returns>
     public bool isSupportedImage(string image) 
     {
-        foreach (string mimeType in supportedTypes!.Keys)
+        foreach (string mimeType in this.supportedTypes!.Keys)
             if (image.StartsWith(mimeType))
                 return true;
         return false;

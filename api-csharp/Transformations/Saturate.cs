@@ -30,6 +30,6 @@ class Saturate : ITransformation
     {
         if (saturation < 0)
             image.Mutate(x => x.Invert());
-        image.Mutate(x => x.Saturate(saturation < 0 ? -saturation : saturation));
+        image.Mutate(x => x.Saturate(this.saturation < 0 ? -this.saturation : this.saturation));
     }
 }

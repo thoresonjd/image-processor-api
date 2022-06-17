@@ -32,6 +32,6 @@ class Resize : ITransformation
     /// <param name="image"></param>
     public void transform(ref SharpImage image) 
     {
-        image.Mutate(x => x.Resize((int)width, (int)height));
+        image.Mutate(x => x.Resize((int)this.width, (int)this.height));
     }
 }

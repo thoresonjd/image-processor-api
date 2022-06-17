@@ -28,6 +28,6 @@ class Rotate : ITransformation
     /// <param name="image"></param>
     public void transform(ref SharpImage image) 
     {
-        image.Mutate(x => x.Rotate(degrees));
+        image.Mutate(x => x.Rotate(this.degrees));
     }
 }

@@ -33,7 +33,7 @@ class Image
     private SharpImage decode(string image) 
     {
         byte[] imageBytes = Convert.FromBase64String(image);
-        SharpImage sharpImage = SharpImage.Load(imageBytes, out format);
+        SharpImage sharpImage = SharpImage.Load(imageBytes, out this.format);
         return sharpImage;
     }
 

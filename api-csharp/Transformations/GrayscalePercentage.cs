@@ -28,6 +28,6 @@ class GrayscalePercentage : ITransformation
     /// <param name="image"></param>
     public void transform(ref SharpImage image) 
     {
-        image.Mutate(x => x.Grayscale(percentage));
+        image.Mutate(x => x.Grayscale(this.percentage));
     }
 }
