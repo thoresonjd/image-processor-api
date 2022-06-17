@@ -7,20 +7,8 @@ namespace ImageProcessor.Controllers;
 [Route("image-processor")]
 public class ImageProcessorController : ControllerBase {
 
-    [HttpGet]
-    public ObjectResult Get() {
-        ImageResponse response = new ImageResponse();
-        response.image = "A string representation of a base64 encoded image will appear here";
-        return Ok(response);
-    }
-
     [HttpPost]
     public ObjectResult ProcessImage([FromBody] ImageRequest request) {
-        
-        foreach (string transformation in request.transformations) {
-            Console.WriteLine(transformation);
-        }
-
         if (string.IsNullOrEmpty(request.image))
             return BadRequest("ERROR: No image provided");
 
@@ -35,5 +23,10 @@ public class ImageProcessorController : ControllerBase {
         ImageResponse response = new ImageResponse();
         response.image = transformedImage;
         return Ok(response);
+    }
+
+    [HttpGet]
+    public ObjectResult Get() {
+        return Ok("The image processor API is running here.");
     }
 }
