@@ -4,7 +4,7 @@ An image processor API created with emphasis on architectural design patterns. T
 
 ## Design Document 
 
-[Image Processor API]("./ImageProcessorAPI.docx")
+[Image Processor API](ImageProcessorAPI.docx)
 
 ## Commands
 
@@ -19,3 +19,7 @@ The image processor API is capable of performing he following commands:
 * Grayscale (default)
 * Grayscale by Percentage
 * Saturate/Desaturate
+
+## Implementation
+
+Two separate implementations of the API were built: one with Python, and one with C#. A client was also created using React with TypeScript as an example for how the image processor API could be accessed and utilized.
