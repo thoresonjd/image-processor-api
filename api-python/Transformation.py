@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from PIL import Image as PillowImage, ImageOps, ImageEnhance
 
 class Transformation(ABC):
-    """Base Transformation object"""
+    """Base Transformation object/interface"""
 
     @abstractmethod
     def transform(self, image: PillowImage) -> PillowImage:

@@ -6,7 +6,7 @@ from io import BytesIO
 from json import load
 
 class Image:
-    """A PIL Image wrapper class that allows Base64 image manipulation"""
+    """An image wrapper class that allows image transformations"""
 
     def __init__(self, image: str) -> None:
         """Instantiate and configure the underlying PIL Image
