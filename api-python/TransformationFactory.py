@@ -1,5 +1,5 @@
 from Transformation import *
-import re
+from re import fullmatch
 
 class TransformationFactory:
     """Converts transformation requests to Transformation objects"""
@@ -16,12 +16,12 @@ class TransformationFactory:
             return FlipHorizontal()
         elif transformation == 'flip-vertical':
             return FlipVertical()
-        elif re.fullmatch('resize\(\d+,\d+\)', transformation):
+        elif fullmatch('resize\(\d+,\d+\)', transformation):
             dimensions: list = transformation[7:-1].split(',')
             width: int = int(dimensions[0])
             height: int = int(dimensions[1])
             return Resize(width, height)
-        elif re.fullmatch('rotate\(-?([0-9]*[.])?[0-9]+\)', transformation):
+        elif fullmatch('rotate\(-?([0-9]*[.])?[0-9]+\)', transformation):
             degrees: int = int(transformation[7:-1])
             return Rotate(degrees)
         elif transformation == 'rotate-left':
@@ -32,10 +32,10 @@ class TransformationFactory:
             return Thumbnail()
         elif transformation == 'grayscale':
             return Grayscale()
-        elif re.fullmatch('grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)', transformation):
+        elif fullmatch('grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)', transformation):
             percentage: float = float(transformation[21:-1])
             return GrayscalePercentage(percentage)
-        elif re.fullmatch('saturate\(-?([0-9]*[.])?[0-9]+\)', transformation):
+        elif fullmatch('saturate\(-?([0-9]*[.])?[0-9]+\)', transformation):
             saturation: float = float(transformation[9:-1])
             return Saturate(saturation)
         
