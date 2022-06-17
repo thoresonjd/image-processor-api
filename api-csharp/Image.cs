@@ -5,23 +5,44 @@ using ImageProcessor.Transformations;
 
 namespace ImageProcessor;
 
-class Image {
-
+/// <summary>
+/// Image<br />
+/// A wrapper class that allows image transformations
+/// </summary>
+class Image 
+{
     private SharpImage image;
     
     private IImageFormat? format;
 
-    public Image(string image) {
+    /// <summary>
+    /// Constructor of the Image class<br />
+    /// Converts an image from Base64 to an ImageSharp Image
+    /// </summary>
+    /// <param name="image"></param>
+    public Image(string image) 
+    {
         this.image = decode(image);
     }
 
-    private SharpImage decode(string image) {
+    /// <summary>
+    /// Decodes a Base64 string representation of an image to an ImageSharp Image
+    /// </summary>
+    /// <param name="image"></param>
+    /// <returns>An ImageSharp Image object</returns>
+    private SharpImage decode(string image) 
+    {
         byte[] imageBytes = Convert.FromBase64String(image);
         SharpImage sharpImage = SharpImage.Load(imageBytes, out format);
         return sharpImage;
     }
 
-    private string encode() {
+    /// <summary>
+    /// Encodes an ImageSharp Image to a Base64 string representation of an image
+    /// </summary>
+    /// <returns>A Base64 string representation of an image</returns>
+    private string encode() 
+    {
         MemoryStream imageStream = new MemoryStream();
         this.image.Save(imageStream, format);
         byte[] imageBytes = imageStream.ToArray();
@@ -29,7 +50,12 @@ class Image {
         return base64String;
     }
 
-    public void transform(List<string> transformations) {
+    /// <summary>
+    /// Performs transformations on the underlying image
+    /// </summary>
+    /// <param name="transformations"></param>
+    public void transform(List<string> transformations) 
+    {
         TransformationBuilder tb = new TransformationBuilder();
         tb.buildTransformations(transformations);
         List<ITransformation> tfs = tb.getTransformations();
@@ -37,7 +63,12 @@ class Image {
             transformation.transform(ref this.image);
     }
 
-    public string getImage() {
+    /// <summary>
+    /// Encodes and retrieves the image in Base64
+    /// </summary>
+    /// <returns>A Base64 string representation of an image</returns>
+    public string getImage() 
+    {
         return encode();
     }
 }
