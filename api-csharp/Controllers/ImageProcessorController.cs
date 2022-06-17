@@ -28,8 +28,12 @@ public class ImageProcessorController : ControllerBase {
         if(!imageVerifier.isSupportedImage(request.image))
             return BadRequest("ERROR: Unsupported media type");
 
+        Image image = new Image(request.image);
+        image.transform(request.transformations);
+        string transformedImage = image.getImage();
+
         ImageResponse response = new ImageResponse();
-        response.image = request.image;
+        response.image = transformedImage;
         return Ok(response);
     }
 }

@@ -1,6 +1,7 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SharpImage = SixLabors.ImageSharp.Image;
+using ImageProcessor.Transformations;
 
 namespace ImageProcessor;
 
@@ -10,7 +11,7 @@ class Image {
     
     private IImageFormat? format;
 
-    private Image(string image) {
+    public Image(string image) {
         this.image = decode(image);
     }
 
@@ -28,8 +29,12 @@ class Image {
         return base64String;
     }
 
-    public void transformImage() {
-        return;
+    public void transform(List<string> transformations) {
+        TransformationBuilder tb = new TransformationBuilder();
+        tb.buildTransformations(transformations);
+        List<ITransformation> tfs = tb.getTransformations();
+        foreach(ITransformation transformation in tfs)
+            transformation.transform(ref this.image);
     }
 
     public string getImage() {
