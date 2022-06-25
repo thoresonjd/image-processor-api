@@ -2,6 +2,7 @@ import { ITransformation } from './ITransformation';
 import { FlipHorizontal } from './FlipHorizontal';
 import { FlipVertical } from './FlipVertical';
 import { Resize } from './Resize';
+import { Rotate } from './Rotate';
 
 class TransformationFactory {
 
@@ -17,6 +18,11 @@ class TransformationFactory {
             let width = parseInt(dimensions[0]);
             let height = parseInt(dimensions[1]);
             return new Resize(width, height);
+        }
+        if (/rotate\(-?([0-9]*[.])?[0-9]+\)/.test(transformation)) {
+            let degrees = parseFloat(transformation
+                .substring(transformation.indexOf('(') + 1, transformation.indexOf(')')));
+            return new Rotate(degrees);
         }
         return null;
     }
