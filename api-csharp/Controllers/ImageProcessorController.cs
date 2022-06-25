@@ -25,7 +25,7 @@ public class ImageProcessorController : ControllerBase
 
         // Check if image is of supported type
         ImageVerifier imageVerifier = new ImageVerifier();
-        if(!imageVerifier.isSupportedImage(request.image))
+        if (!imageVerifier.isSupportedImage(request.image))
             return BadRequest("ERROR: Unsupported media type");
 
         // Transform the image

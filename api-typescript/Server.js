@@ -1,6 +1,6 @@
 "use strict";
-exports.__esModule = true;
-var ImageProcessor_1 = require("./ImageProcessor");
-var app = new ImageProcessor_1.ImageProcessor().getApp();
-var PORT = 2022;
-app.listen(PORT, function () { return console.log("ImageProcessor listening on port ".concat(PORT)); });
+Object.defineProperty(exports, "__esModule", { value: true });
+const ImageProcessor_1 = require("./ImageProcessor");
+const app = new ImageProcessor_1.ImageProcessor().getApp();
+const PORT = 2022;
+app.listen(PORT, () => console.log(`ImageProcessor listening on port ${PORT}`));
