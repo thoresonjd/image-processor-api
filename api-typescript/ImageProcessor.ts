@@ -27,8 +27,6 @@ class ImageProcessor {
     private endpoints(): void {
         this.expressApp.post('/image-processor/', (req, res) => {
             
-            console.log(req.body['transformations'])
-
             // Check if image exists
             if (!req.body['image'] || typeof req.body['image'] === 'undefined')
                 res.status(400).send("ERROR: No image provided");
