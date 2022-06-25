@@ -1,36 +1,51 @@
 "use strict";
-exports.__esModule = true;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageProcessor = void 0;
-var express = require("express");
-var bodyParser = require("body-parser");
-var cors = require("cors");
-var options = {
+const express_1 = __importDefault(require("express"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
+const Image_1 = require("./Image");
+const ImageVerifier_1 = require("./ImageVerifier");
+const options = {
     origin: '*'
 };
-var ImageProcessor = /** @class */ (function () {
-    function ImageProcessor() {
-        this.expressApp = express();
+class ImageProcessor {
+    constructor() {
+        this.expressApp = (0, express_1.default)();
         this.middleware();
         this.endpoints();
     }
-    ImageProcessor.prototype.middleware = function () {
-        this.expressApp.use(bodyParser.urlencoded({ extended: true }));
-        this.expressApp.use(bodyParser.json());
-        this.expressApp.use(cors(options));
-    };
-    ImageProcessor.prototype.endpoints = function () {
-        this.expressApp.post('/image-processor/', function (req, res) {
-            var data = req.body;
-            console.log(data);
-            res.send(data);
+    middleware() {
+        this.expressApp.use(body_parser_1.default.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
+        this.expressApp.use(body_parser_1.default.json({ limit: '50mb' }));
+        this.expressApp.use((0, cors_1.default)(options));
+    }
+    endpoints() {
+        this.expressApp.post('/image-processor/', (req, res) => {
+            console.log(req.body['transformations']);
+            // Check if image exists
+            if (!req.body['image'] || typeof req.body['image'] === 'undefined')
+                res.status(400).send("ERROR: No image provided");
+            // Check if image is of supported type
+            let imageVerifier = new ImageVerifier_1.ImageVerifier();
+            if (!imageVerifier.isSupportedImage(req.body['image']))
+                res.status(400).send("ERROR: Unsupported media type");
+            // Transform image
+            let image = new Image_1.Image(req.body['image']);
+            image.transform(req.body['transformations']);
+            let transformedImage = image.getImage();
+            // Send image response
+            transformedImage.then(result => res.status(200).json({ "image": result }));
         });
-        this.expressApp.get('/image-processor/', function (req, res) {
+        this.expressApp.get('/image-processor/', (req, res) => {
             res.send("ImageProcessor running");
         });
-    };
-    ImageProcessor.prototype.getApp = function () {
+    }
+    getApp() {
         return this.expressApp;
-    };
-    return ImageProcessor;
-}());
+    }
+}
 exports.ImageProcessor = ImageProcessor;
