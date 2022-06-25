@@ -14,28 +14,28 @@ class TransformationFactory:
         
         if transformation == 'flip-horizontal':
             return FlipHorizontal()
-        elif transformation == 'flip-vertical':
+        if transformation == 'flip-vertical':
             return FlipVertical()
-        elif fullmatch('resize\(\d+,\d+\)', transformation):
+        if fullmatch('resize\(\d+,\d+\)', transformation):
             dimensions: list = transformation[7:-1].split(',')
             width: int = int(dimensions[0])
             height: int = int(dimensions[1])
             return Resize(width, height)
-        elif fullmatch('rotate\(-?([0-9]*[.])?[0-9]+\)', transformation):
+        if fullmatch('rotate\(-?([0-9]*[.])?[0-9]+\)', transformation):
             degrees: int = int(transformation[7:-1])
             return Rotate(degrees)
-        elif transformation == 'rotate-left':
+        if transformation == 'rotate-left':
             return RotateLeft()
-        elif transformation == 'rotate-right':
+        if transformation == 'rotate-right':
             return RotateRight()
-        elif transformation == 'thumbnail':
+        if transformation == 'thumbnail':
             return Thumbnail()
-        elif transformation == 'grayscale':
+        if transformation == 'grayscale':
             return Grayscale()
-        elif fullmatch('grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)', transformation):
+        if fullmatch('grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)', transformation):
             percentage: float = float(transformation[21:-1])
             return GrayscalePercentage(percentage)
-        elif fullmatch('saturate\(-?([0-9]*[.])?[0-9]+\)', transformation):
+        if fullmatch('saturate\(-?([0-9]*[.])?[0-9]+\)', transformation):
             saturation: float = float(transformation[9:-1])
             return Saturate(saturation)
         
