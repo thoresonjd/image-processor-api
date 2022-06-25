@@ -6,7 +6,7 @@ class Thumbnail {
         this.MAX_SIZE = 100;
     }
     transform(image) {
-        return image.resize(this.MAX_SIZE, this.MAX_SIZE, { fit: 'contain' });
+        return image.resize(this.MAX_SIZE, this.MAX_SIZE, { fit: 'inside' });
     }
 }
 exports.Thumbnail = Thumbnail;
