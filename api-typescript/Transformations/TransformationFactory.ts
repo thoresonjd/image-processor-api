@@ -5,6 +5,7 @@ import { Resize } from './Resize';
 import { Rotate } from './Rotate';
 import { RotateLeft } from './RotateLeft';
 import { RotateRight } from './RotateRight';
+import { Thumbnail } from './Thumbnail';
 
 class TransformationFactory {
 
@@ -30,6 +31,8 @@ class TransformationFactory {
             return new RotateLeft();
         if (transformation === 'rotate-right')
             return new RotateRight();
+        if (transformation === 'thumbnail')
+            return new Thumbnail();
         return null;
     }
 }
