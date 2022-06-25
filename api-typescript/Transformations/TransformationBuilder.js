@@ -7,7 +7,11 @@ class TransformationBuilder {
         this.transformations = new Array();
     }
     buildTransformations(transformations) {
-        transformations.forEach(transformation => this.transformations.push(TransformationFactory_1.TransformationFactory.getTransformation(transformation)));
+        transformations.forEach(t => {
+            let transformation = TransformationFactory_1.TransformationFactory.getTransformation(t);
+            if (transformation)
+                this.transformations.push(transformation);
+        });
     }
     getTransformations() {
         return [...this.transformations];
