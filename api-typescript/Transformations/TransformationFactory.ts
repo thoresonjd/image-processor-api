@@ -3,6 +3,8 @@ import { FlipHorizontal } from './FlipHorizontal';
 import { FlipVertical } from './FlipVertical';
 import { Resize } from './Resize';
 import { Rotate } from './Rotate';
+import { RotateLeft } from './RotateLeft';
+import { RotateRight } from './RotateRight';
 
 class TransformationFactory {
 
@@ -24,6 +26,10 @@ class TransformationFactory {
                 .substring(transformation.indexOf('(') + 1, transformation.indexOf(')')));
             return new Rotate(degrees);
         }
+        if (transformation === 'rotate-left')
+            return new RotateLeft();
+        if (transformation === 'rotate-right')
+            return new RotateRight();
         return null;
     }
 }

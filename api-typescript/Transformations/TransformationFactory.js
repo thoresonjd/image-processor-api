@@ -5,6 +5,8 @@ const FlipHorizontal_1 = require("./FlipHorizontal");
 const FlipVertical_1 = require("./FlipVertical");
 const Resize_1 = require("./Resize");
 const Rotate_1 = require("./Rotate");
+const RotateLeft_1 = require("./RotateLeft");
+const RotateRight_1 = require("./RotateRight");
 class TransformationFactory {
     static getTransformation(transformation) {
         if (transformation === 'flip-horizontal')
@@ -24,6 +26,10 @@ class TransformationFactory {
                 .substring(transformation.indexOf('(') + 1, transformation.indexOf(')')));
             return new Rotate_1.Rotate(degrees);
         }
+        if (transformation === 'rotate-left')
+            return new RotateLeft_1.RotateLeft();
+        if (transformation === 'rotate-right')
+            return new RotateRight_1.RotateRight();
         return null;
     }
 }
