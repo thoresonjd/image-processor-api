@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Image = void 0;
 const sharp_1 = __importDefault(require("sharp"));
+const TransformationBuilder_1 = require("./Transformations/TransformationBuilder");
 class Image {
     constructor(image) {
         this.image = this.decode(image);
@@ -27,8 +28,10 @@ class Image {
         });
     }
     transform(transformations) {
-        for (let transformation of transformations)
-            console.log(transformation);
+        let transformationBuilder = new TransformationBuilder_1.TransformationBuilder();
+        transformationBuilder.buildTransformations(transformations);
+        let tfs = transformationBuilder.getTransformations();
+        tfs.forEach(t => this.image = t.transform(this.image));
     }
     getImage() {
         return __awaiter(this, void 0, void 0, function* () {

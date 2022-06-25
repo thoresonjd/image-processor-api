@@ -1,4 +1,6 @@
 import sharp from 'sharp';
+import { ITransformation } from './Transformations/ITransformation';
+import { TransformationBuilder } from './Transformations/TransformationBuilder';
 
 class Image {
 
@@ -16,9 +18,11 @@ class Image {
         return await this.image.toBuffer().then(result => result.toString('base64'));
     }
 
-    public transform(transformations: string[]): void {
-        for (let transformation of transformations)
-            console.log(transformation)
+    public transform(transformations: Array<string>): void {
+        let transformationBuilder: TransformationBuilder = new TransformationBuilder();
+        transformationBuilder.buildTransformations(transformations);
+        let tfs: Array<ITransformation> = transformationBuilder.getTransformations();
+        tfs.forEach(t => this.image = t.transform(this.image));
     }
 
     public async getImage(): Promise<string> {
