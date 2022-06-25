@@ -10,9 +10,11 @@ class TransformationBuilder {
     }
 
     public buildTransformations(transformations: Array<string>): void {
-        transformations.forEach(transformation =>
-            this.transformations.push(TransformationFactory.getTransformation(transformation))
-        );
+        transformations.forEach(t => {
+            let transformation = TransformationFactory.getTransformation(t);
+            if (transformation)
+                this.transformations.push(transformation);
+        });
     }
 
     public getTransformations(): Array<ITransformation> {
