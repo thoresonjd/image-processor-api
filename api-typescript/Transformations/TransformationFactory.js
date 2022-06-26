@@ -8,6 +8,7 @@ const Rotate_1 = require("./Rotate");
 const RotateLeft_1 = require("./RotateLeft");
 const RotateRight_1 = require("./RotateRight");
 const Thumbnail_1 = require("./Thumbnail");
+const Grayscale_1 = require("./Grayscale");
 class TransformationFactory {
     static getTransformation(transformation) {
         if (transformation === 'flip-horizontal')
@@ -33,6 +34,8 @@ class TransformationFactory {
             return new RotateRight_1.RotateRight();
         if (transformation === 'thumbnail')
             return new Thumbnail_1.Thumbnail();
+        if (transformation === 'grayscale')
+            return new Grayscale_1.Grayscale();
         return null;
     }
 }

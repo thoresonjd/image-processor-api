@@ -6,6 +6,7 @@ import { Rotate } from './Rotate';
 import { RotateLeft } from './RotateLeft';
 import { RotateRight } from './RotateRight';
 import { Thumbnail } from './Thumbnail';
+import { Grayscale } from './Grayscale';
 
 class TransformationFactory {
 
@@ -33,6 +34,8 @@ class TransformationFactory {
             return new RotateRight();
         if (transformation === 'thumbnail')
             return new Thumbnail();
+        if (transformation === 'grayscale')
+            return new Grayscale();
         return null;
     }
 }
