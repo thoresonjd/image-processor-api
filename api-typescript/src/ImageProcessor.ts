@@ -26,7 +26,17 @@ class ImageProcessor {
 
     private endpoints(): void {
         this.expressApp.post('/image-processor/', (req, res) => {
-            
+
+            // Saturate and grayscale % cannot be processed via the TS implementation
+            req.body['transformations'].forEach((t: string) => {
+                if (/grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)/.test(t) ||
+                    /saturate\(-?([0-9]*[.])?[0-9]+\)/.test(t))
+                    res.status(418).send(
+                        "ERROR: I'm a teapot. " +
+                        "I really don't want to process this right now, " +
+                        "nor am I able to.");
+            });
+
             // Check if image exists
             if (!req.body['image'] || typeof req.body['image'] === 'undefined')
                 res.status(400).send("ERROR: No image provided");
