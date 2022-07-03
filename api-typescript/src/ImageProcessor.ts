@@ -44,7 +44,7 @@ class ImageProcessor {
             // Check if image is of supported type
             let imageVerifier: ImageVerifier = new ImageVerifier();
             if(!imageVerifier.isSupportedImage(req.body['image']))
-                res.status(400).send("ERROR: Unsupported media type");
+                res.status(415).send("ERROR: Unsupported media type");
             
             // Transform image
             let image: Image = new Image(req.body['image']);

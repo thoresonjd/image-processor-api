@@ -23,7 +23,7 @@ class ImageProcessor(Resource):
         # Verify image
         imageVerifier: ImageVerifier = ImageVerifier()
         if not imageVerifier.is_supported_image(req['image']):
-            return 'ERROR: Unsupported media type', 400
+            return 'ERROR: Unsupported media type', 415
 
         # Create and transform image
         image: Image = Image(req['image'])
