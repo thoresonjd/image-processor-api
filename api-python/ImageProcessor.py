@@ -17,11 +17,11 @@ class ImageProcessor(Resource):
         req: dict = request.get_json()
 
         # Check if image exists
-        if 'image' not in req:
+        imageVerifier: ImageVerifier = ImageVerifier()
+        if not imageVerifier.has_image(req):
             return 'ERROR: No image provided', 400
 
-        # Verify image
-        imageVerifier: ImageVerifier = ImageVerifier()
+        # Verify image is supported media type
         if not imageVerifier.is_supported_image(req['image']):
             return 'ERROR: Unsupported media type', 415
 

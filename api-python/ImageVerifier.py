@@ -6,6 +6,15 @@ class ImageVerifier:
     def __init__(self) -> None:
         self.__mimeTypes: dict = load(open("MIMETypes.json"))
 
+    def has_image(self, request: dict) -> bool:
+        """Checks if the request contained data for the image payload
+        
+        :param request: The payload of the POST request
+        :return: True if image data exists, False otherwise
+        """
+
+        return 'image' in request
+
     def is_supported_image(self, image: str) -> bool:
         """Checks a Base64 image's MIME type for validity
     
