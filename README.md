@@ -4,7 +4,7 @@ An image processor API created with emphasis on architectural design patterns. T
 
 ## Design Document 
 
-[Image Processor API](ImageProcessorAPI.docx)
+[Image Processor API](ImageProcessorAPI.pdf)
 
 ## Commands
 
