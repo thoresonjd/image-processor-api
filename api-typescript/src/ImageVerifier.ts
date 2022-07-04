@@ -8,6 +8,10 @@ class ImageVerifier {
         this.supportedTypes = MIMETypes;
     }
 
+    public hasImage(image: string | undefined): boolean {
+        return !!image || typeof image !== 'undefined';
+    }
+
     public isSupportedImage(image: string): boolean {
         for (let mimeType in this.supportedTypes)
             if (image.startsWith(mimeType))

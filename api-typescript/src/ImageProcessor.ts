@@ -38,13 +38,17 @@ class ImageProcessor {
             });
 
             // Check if image exists
-            if (!req.body['image'] || typeof req.body['image'] === 'undefined')
+            let imageVerifier: ImageVerifier = new ImageVerifier();
+            if (!imageVerifier.hasImage(req.body['image'])) {
                 res.status(400).send("ERROR: No image provided");
+                return;
+            }
 
             // Check if image is of supported type
-            let imageVerifier: ImageVerifier = new ImageVerifier();
-            if(!imageVerifier.isSupportedImage(req.body['image']))
+            if (!imageVerifier.isSupportedImage(req.body['image'])) {
                 res.status(415).send("ERROR: Unsupported media type");
+                return;
+            }
             
             // Transform image
             let image: Image = new Image(req.body['image']);
