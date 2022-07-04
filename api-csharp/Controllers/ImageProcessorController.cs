@@ -17,7 +17,7 @@ public class ImageProcessorController : ControllerBase
     /// <param name="request"></param>
     /// <returns>An HTTP reponse containing the transformed image</returns>
     [HttpPost]
-    public ObjectResult ProcessImage([FromBody] ImageRequest request) 
+    public IActionResult ProcessImage([FromBody] ImageRequest request) 
     {
         // Check if image exists
         if (string.IsNullOrEmpty(request.image))
@@ -26,7 +26,10 @@ public class ImageProcessorController : ControllerBase
         // Check if image is of supported type
         ImageVerifier imageVerifier = new ImageVerifier();
         if (!imageVerifier.isSupportedImage(request.image))
-            return BadRequest("ERROR: Unsupported media type");
+        {
+            Response.StatusCode = StatusCodes.Status415UnsupportedMediaType;
+            return Content("ERROR: Unsupported media type");
+        }
 
         // Transform the image
         Image image = new Image(request.image);
