@@ -30,11 +30,13 @@ class ImageProcessor {
             // Saturate and grayscale % cannot be processed via the TS implementation
             req.body['transformations'].forEach((t: string) => {
                 if (/grayscale-percentage\(-?([0-9]*[.])?[0-9]+\)/.test(t) ||
-                    /saturate\(-?([0-9]*[.])?[0-9]+\)/.test(t))
+                    /saturate\(-?([0-9]*[.])?[0-9]+\)/.test(t)) {
                     res.status(418).send(
                         "ERROR: I'm a teapot. " +
                         "I really don't want to process this right now, " +
                         "nor am I able to.");
+                    return;
+                }
             });
 
             // Check if image exists
