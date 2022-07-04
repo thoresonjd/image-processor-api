@@ -20,11 +20,11 @@ public class ImageProcessorController : ControllerBase
     public IActionResult ProcessImage([FromBody] ImageRequest request) 
     {
         // Check if image exists
-        if (string.IsNullOrEmpty(request.image))
+        ImageVerifier imageVerifier = new ImageVerifier();
+        if (!imageVerifier.hasImage(request.image))
             return BadRequest("ERROR: No image provided");
 
         // Check if image is of supported type
-        ImageVerifier imageVerifier = new ImageVerifier();
         if (!imageVerifier.isSupportedImage(request.image))
         {
             Response.StatusCode = StatusCodes.Status415UnsupportedMediaType;

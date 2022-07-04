@@ -21,6 +21,16 @@ class ImageVerifier
     }
 
     /// <summary>
+    /// Checks if data exists for the image payload
+    /// </summary>
+    /// <param name="image"></param>
+    /// <returns>True if image exists, false otherwise</returns>
+    public bool hasImage(string image)
+    {
+        return !string.IsNullOrEmpty(image);
+    }
+
+    /// <summary>
     /// Checks if an image has a supported MIME type
     /// </summary>
     /// <param name="image"></param>
